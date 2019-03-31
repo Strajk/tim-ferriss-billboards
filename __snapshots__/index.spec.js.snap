@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tim-ferriss-billboards 1`] = `
+Object {
+  "guest": "Susan Cain",
+  "mp3": "https://rss.art19.com/episodes/627d570d-a0c4-4ac8-9f04-f062512162be.mp3",
+  "number": "357",
+  "overcast": "https://overcast.fm/+KebvCYqjU",
+  "quote": "What would Susan’s billboard say? [1:31:04]",
+  "spotify": "https://open.spotify.com/episode/1TFRruyHF8Z7koOLrnFTkX",
+  "timestamp": "1:31:04",
+  "title": "Susan Cain — How to Overcome Fear and Embrace Creativity (#357)",
+  "url": "idealCase.com",
+}
+`;
+
+exports[`tim-ferriss-billboards 2`] = `
+Object {
+  "guest": "Neil Gaiman",
+  "mp3": "https://rss.art19.com/episodes/c23f9079-1e14-4b4c-93cc-5dbe8684d06f.mp3",
+  "number": "366",
+  "overcast": "https://overcast.fm/+KebuXjhSc",
+  "quote": "",
+  "spotify": "https://open.spotify.com/episode/09Lth2YyWp7gnuoC1gVh13",
+  "timestamp": "",
+  "title": "Neil Gaiman — The Interview I’ve Waited 20 Years To Do (#366)",
+  "url": "noBillboard.com",
+}
+`;
+
+exports[`tim-ferriss-billboards 3`] = `
+Object {
+  "guest": "",
+  "mp3": "https://rss.art19.com/episodes/fb7b7920-bf19-4982-86ca-2a61b065418d.mp3",
+  "number": "363",
+  "overcast": "https://overcast.fm/+Kebv-wcMI",
+  "quote": "",
+  "spotify": "https://open.spotify.com/episode/5dobjpVpqRvd4Dfj31R2fA",
+  "timestamp": "",
+  "title": "Tea Time with Tim — How to Find Mentors, Decrease Anxiety Through Training, and Much More (#363)",
+  "url": "noHost.com",
+}
+`;
+
+exports[`tim-ferriss-billboards 4`] = `
+Object {
+  "guest": "Dave Elitch",
+  "mp3": "https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3",
+  "number": "348",
+  "overcast": undefined,
+  "quote": "What would Dave’s billboard say? [1:44:46]",
+  "spotify": undefined,
+  "timestamp": "1:44:46",
+  "title": "Dave Elitch — How to Get Out of Your Own Way (#348)",
+  "url": "noOvercast.com",
+}
+`;
+
+exports[`tim-ferriss-billboards 5`] = `
+Object {
+  "guest": "",
+  "mp3": undefined,
+  "number": undefined,
+  "overcast": undefined,
+  "quote": "",
+  "spotify": undefined,
+  "timestamp": "",
+  "title": "All Transcripts From The Tim Ferriss Show!",
+  "url": "totallyInvalid.com",
+}
+`;
+
+exports[`tim-ferriss-billboards 6`] = `
+Object {
+  "guest": "Tim Ferriss",
+  "mp3": "https://rss.art19.com/episodes/13d87dad-75aa-45f1-8ec4-27a858ec5f1e.mp3",
+  "number": "284",
+  "overcast": undefined,
+  "quote": "What would I put on a billboard? (15:20)",
+  "spotify": undefined,
+  "timestamp": "15:20",
+  "title": "The Answers to My Favorite Questions (#284)",
+  "url": "parenthesisTimestamps.com",
+}
+`;

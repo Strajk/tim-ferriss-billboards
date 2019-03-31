@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dave Elitch — How to Get Out of Your Own Way (#348) | The Blog of Author Tim Ferriss</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://tim.blog/xmlrpc.php">
+		<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-1467054-2', 'auto', { 'allowLinker': true } );
+		ga( 'require', 'linker' );
+		ga( 'linker:autoLink', [ 'fourhourworkweek.com' ] );
+		ga( 'send', 'pageview' );
+
+		/**
+		 * Function that tracks a click on an outbound link in Analytics.
+		 * This function takes a valid URL string as an argument, and uses that URL string
+		 * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+		 * using 'navigator.sendBeacon' in browser that support it.
+		 */
+		var trackOutboundLink = function( url,  newTab ) {
+
+			var callbackHit;
+
+			callbackHit = false;
+
+			ga( 'send', 'event', {
+				eventCategory: 'Link Clicks',
+				eventAction:   'Outbound',
+				eventLabel:    url,
+				transport:     'beacon',
+				hitCallback:   outboundHitCallback
+			} );
+
+			// Fallback if the qa tracking function fails for any reason.
+			setTimeout( outboundHitCallback, 2000 );
+
+			/**
+			 * Causes the outbound link to open after being tracked.
+			 */
+			function outboundHitCallback() {
+				if ( false === callbackHit ) {
+					callbackHit = true;
+					if ( newTab ) {
+						window.open( url, '_blank' );
+					} else {
+						document.location = url;
+					}
+				}
+			}
+		};
+
+		/**
+		 * Tracks share links.
+		 */
+		var trackShareLink = function( target ) {
+
+			var action   = target.text.replace( / ?\d+/, '' ),
+				category = 'Print' === action ? 'Print' : 'Share';
+
+			ga( 'send', 'event', {
+				eventCategory: category,
+				eventAction:   'Print' === category ? target.href : action,
+				eventLabel:    target.href
+			} );
+		};
+
+		/**
+		 * Click callback, checks to make sure the iten is an <a> and not an internal link before tracking.
+		 *
+		 * @param {{}} e
+		 * @returns {boolean}
+		 */
+		function maybeTrackOutboundLink( e ) {
+			var e = window.e || e,
+				target;
+
+			target = e.target;
+
+			if ( target.tagName !== 'A' ) {
+				if ( target.parentElement.tagName === 'A' ) {
+					target = e.target.parentElement;
+				} else {
+					return true;
+				}
+			}
+
+			if ( target.className.match( /sd-button/ ) ) {
+				trackShareLink( target );
+				return true;
+			}
+
+			if ( /JavaScript:Void/i.test( target.href ) ) {
+				return true;
+			}
+
+			if ( /tim.blog|fourhourworkweek\.com|tim\.blog/.test( target.href ) ) {
+				return true;
+			}
+
+			e.preventDefault();
+
+			trackOutboundLink( target.href, ( typeof target.target !== 'undefined' && '_blank' === target.target ) );
+
+			return false;
+		}
+
+		if ( document.addEventListener ) {
+			document.addEventListener( 'click', maybeTrackOutboundLink, true );
+		} else {
+			document.attachEvent( 'onclick', maybeTrackOutboundLink );
+		}
+
+	</script>
+	<!-- End Google Analytics -->
+	
+<meta name="description" content="&quot;Slow down. Do it again.&quot; — Dave Elitch Dave Elitch (IG: @daveelitch) first garnered attention with his band Daughters of Mara&#039;s debut album I am Destroyer in 2007, but his time touring with the American progressive rock band The Mars Volta in 2009-2010 is what really put him on the map." />
+<meta name="keywords" content="the tim ferriss show, dave elitch, drummer, learning" /><meta name="google-site-verification" content="N6tTgA7JvRhbppmjIbP1nx-LUlIn9rsDXXHs9VmQCuM" />
+<meta name="google-site-verification" content="YDdS4a2wKQkUzxhylm81lGDdO6wp0iPsQb1zvMKqADM" />
+
+<meta name="google-site-verification" content="hIbo0UNkhIj5ogqV159jQPnPzLdpUrczqFJ_Ey8lX80" />
+		<script src='https://r-login.wordpress.com/remote-login.php?action=js&amp;host=tim.blog&amp;id=56542934&amp;t=1554044308&amp;back=https%3A%2F%2Ftim.blog%2F2018%2F11%2F26%2Fdave-elitch%2F' type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//bounceexchange.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fhww.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="The Blog of Author Tim Ferriss &raquo; Feed" href="https://tim.blog/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Blog of Author Tim Ferriss &raquo; Comments Feed" href="https://tim.blog/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Blog of Author Tim Ferriss &raquo; Dave Elitch — How to Get Out of Your Own Way&nbsp;(#348) Comments Feed" href="https://tim.blog/2018/11/26/dave-elitch/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1550249335h&ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJx9kNFugzAMRX9owdrEEC/TvgWCW1ziJIqTIf6+BtpKbSdeLNu5x/YNzNHY4DP6DFxMdOVMXmCONrARJofLS1VZkQ/4H3M0ocAFc+zsZLbqISdvXRn0WRswkGToXdhUferSApIXhxWTP1pgQ0Ltc+zyqmAcqEOHrLIjjGNzp9Z01OsOfeyG+z4mFDEamQqbPOqiQ06p9ZTd+Wb0qbOjBD5kUloeydvMfRX8UYRTKMmMa5hDmsyMON3+SqFf/vn8rpu2bevm63IFhaestQ==?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='screen-css-1-1' href='https://s2.wp.com/_static/??/wp-content/themes/vip/four-hour-work-week/css/reveal.css,/wp-content/themes/vip/plugins/taxonomy-images/css/style.css?m=1506960102j&cssminify=yes' type='text/css' media='screen' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s2.wp.com/_static/??-eJx9j9EKwjAMRX/IGgZW9iJ+S60xq6ZNWTKGf2+HPjiUPSWX3HO5gbm6KMWwGOTJVZ4oFYU5XQlNAad2lUdCx2EGw1w5GCqoPRn3UXUH/wMIxbHEYEnKSrgbhzRuoSNeWKitBM31JbegKmrvaNAhjAv8mVuUSkyBWzeStfiBbMDc/h4OQCyXwIvhnE+d913f9Ufv7y/4NHsN?cssminify=yes' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sranalytics = {"version":"0.1.4","pid":"56200ae1736b797ac300071c","iframe":"0","title":"Dave Elitch \u2014 How to Get Out of Your Own Way (#348)","url":"https:\/\/tim.blog\/2018\/11\/26\/dave-elitch\/","date":"2018-11-26 16:40:18","channels":["the-tim-ferriss-show"],"tags":["dave elitch","drummer","learning"],"authors":["Tim Ferriss"]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJyFjt0KwjAMRl/IWnXuwgvxWWqNW2r/bNKN+fRGUEEcCoFAcvi+o8esMFpfT0DayVwrlOm5lo4W+hegAnbFMCwDxhdsU2SI/GBzIg5AZDqY+YZ0RA+qEhQBIkvNOc1wn0oYB4TxL+aAs7EXVYDw9tXOPYiXHjDr7GuHkTRhyGJTwNhemWj8xGgl1QyGbMHMgpT3XQIPYb9u29Vmu2ua1t0B34B7Ow=='></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://fhww.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://tim.blog/2018/11/26/dave-elitch/" />
+<link rel='shortlink' href='https://wp.me/p3PfoO-aFQ' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Ftim.blog%2F2018%2F11%2F26%2Fdave-elitch%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Ftim.blog%2F2018%2F11%2F26%2Fdave-elitch%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Dave Elitch — How to Get Out of Your Own Way (#348)" />
+<meta property="og:url" content="https://tim.blog/2018/11/26/dave-elitch/" />
+<meta property="og:description" content="&#8220;Slow down. Do it again.&#8221; — Dave Elitch Dave Elitch (IG: @daveelitch) first garnered attention with his band Daughters of Mara&#8217;s debut album I am Destroyer in 2007, but his time t…" />
+<meta property="article:published_time" content="2018-11-26T16:40:18+00:00" />
+<meta property="article:modified_time" content="2019-02-12T07:38:28+00:00" />
+<meta property="og:site_name" content="The Blog of Author Tim Ferriss" />
+<meta property="og:image" content="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=1200" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="800" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@tferriss" />
+<meta name="twitter:site" content="@tferriss" />
+<meta name="twitter:text:title" content="Dave Elitch — How to Get Out of Your Own Way&nbsp;(#348)" />
+<meta name="twitter:image" content="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&#038;strip=all&#038;w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/53cccdfdc7f3fd44dd002c4d2e5bc55e?s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/53cccdfdc7f3fd44dd002c4d2e5bc55e?s=32" sizes="16x16" />
+<link rel="apple-touch-icon-precomposed" href="https://secure.gravatar.com/blavatar/53cccdfdc7f3fd44dd002c4d2e5bc55e?s=114" />
+<link rel='openid.server' href='https://fhww.wordpress.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://fhww.wordpress.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://tim.blog/osd.xml" title="The Blog of Author Tim Ferriss" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+		<style>
+			.wpcom-related-posts ul li {
+				list-style-type: none;
+				display: inline-block;
+			}
+		</style>
+			<meta name="google-site-verification" content="YDdS4a2wKQkUzxhylm81lGDdO6wp0iPsQb1zvMKqADM" />
+	<meta name="google-site-verification" content="hIbo0UNkhIj5ogqV159jQPnPzLdpUrczqFJ_Ey8lX80" />
+	<meta name="apple-itunes-app" content="app-id=863897795"><meta name="application-name" content="The Blog of Author Tim Ferriss" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Tim Ferriss&#039;s 4-Hour Workweek and Lifestyle Design Blog" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://tim.blog/feed/;icon-uri=https://secure.gravatar.com/blavatar/53cccdfdc7f3fd44dd002c4d2e5bc55e?s=16" /><style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #1a1a1a; }
+</style>
+	<link rel="amphtml" href="https://tim.blog/2018/11/26/dave-elitch/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+			n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+			document,'script','//connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '788987874513702');
+		fbq('track', 'PageView');
+			</script>
+	<noscript><img height="1" width="1" style="display:none"
+				   src="https://www.facebook.com/tr?id=788987874513702&amp;ev=PageView&amp;noscript=1"
+		/></noscript>
+	<!-- End Facebook Pixel Code -->
+	
+</head>
+
+<body class="post-template-default single single-post postid-41034 single-format-standard custom-background mp6 customizer-styles-applied group-blog highlander-enabled highlander-light">
+		<div id="page" class="hfeed site">
+						<header id="masthead" class="site-header" role="banner">
+
+			<div id="podcast-header">
+	<div class="col-sm-6 col-sm-offset-6">
+		<div class="podcast-right">
+			<div class="podcast-accolades">
+				<img src="https://s2.wp.com/wp-content/themes/vip/four-hour-work-week/images/podcast-header/3x-best-itunes.png" height="20" width="299" alt="The Tim Ferriss Show: 200+ Million Downloads" class=" tfs-accolades-top">
+				<div id="tfs-accolades-slider">
+					<div class="item"><img src="https://s2.wp.com/wp-content/themes/vip/four-hour-work-week/images/podcast-header/300-million-downloads.png" alt="" width="313" height="78"></div>
+					<div class="item"><img src="https://s2.wp.com/wp-content/themes/vip/four-hour-work-week/images/podcast-header/TF-reviews.png" alt="" width="215" height="86"></div>
+				</div>
+				<img src="https://s2.wp.com/wp-content/themes/vip/four-hour-work-week/images/podcast-header/tfs-logo.png" height="123" width="221" alt="The Tim Ferriss Show" class="tfs-logo">
+			</div>
+						<div class="podcast-episode">
+				<h4>Latest Episode:</h4>
+				<h3>"Neil Gaiman — The Interview I&#8217;ve Waited 20 Years To Do&nbsp;(#366)"</h3>
+				<a class="podcast-btn" target="_blank" href="https://rss.art19.com/episodes/c23f9079-1e14-4b4c-93cc-5dbe8684d06f.mp3"><i class="icon-play"></i>Click to Listen</a>
+			</div>
+					</div>
+	</div>
+</div>
+
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+
+				<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+				<div class="mobile-text-menu-items">
+					<a href="https://tim.blog/podcast/"> Podcast</a>
+					<a href="https://tim.blog/fearless/"> TV Show</a>
+					<a href="https://tim.blog/tim-ferriss-books/"> Books</a>
+				</div>
+				<div class="mobile-nav">
+					<div class="menu-btn" id="hamburger-btn">
+						<div></div>
+						<div class="hamburger-inner">
+							<span></span>
+							<span></span>
+							<span></span>
+							<div class="close-hamburger-menu"><i class="top-nav-icons close-white"></i></div>
+						</div>
+					</div>
+				</div>
+				<div class="responsive-menu">
+					<div class="menu-2015-nav-container"><ul id="menu-2015-nav" class="menu"><li id="menu-item-14850" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-14850"><a href="https://tim.blog/">Home</a></li>
+<li id="menu-item-14851" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14851"><a href="https://tim.blog/podcast/">Podcast</a></li>
+<li id="menu-item-15479" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15479"><a href="https://tim.blog/tim-ferriss-books/">Books</a>
+<ul class="sub-menu">
+	<li id="menu-item-34171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34171"><a href="https://tim.blog/tim-ferriss-books/">Published Books</a></li>
+	<li id="menu-item-34166" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-34166"><a href="https://tim.blog/category/tim-ferriss-book-club/">Book Club</a></li>
+</ul>
+</li>
+<li id="menu-item-32877" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32877"><a href="https://tim.blog/fearless/">TV Shows</a>
+<ul class="sub-menu">
+	<li id="menu-item-32878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32878"><a href="https://tim.blog/fearless/">Fear{less}</a></li>
+	<li id="menu-item-14849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14849"><a href="https://tim.blog/tv/">The Tim Ferriss Experiment</a></li>
+</ul>
+</li>
+<li id="menu-item-44823" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-44823"><a href="https://go.tim.blog/5-bullet-friday-1/">Newsletter</a></li>
+<li id="menu-item-14853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-14853"><a href="https://tim.blog/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-14858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14858"><a href="https://tim.blog/about/">Tim Ferriss Bio</a></li>
+	<li id="menu-item-14854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14854"><a href="https://tim.blog/about/causes/">Causes</a></li>
+	<li id="menu-item-14859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14859"><a href="https://tim.blog/media/">Media Kit and Samples</a></li>
+	<li id="menu-item-14855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14855"><a href="https://tim.blog/about/terms-of-service/">Terms of Service</a></li>
+	<li id="menu-item-14856" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14856"><a href="https://tim.blog/ftc-disclosure-blog/">Disclosure – The Full Monty</a></li>
+	<li id="menu-item-14857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14857"><a href="https://tim.blog/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-14860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-14860"><a href="https://tim.blog/contact/">Contact</a>
+<ul class="sub-menu">
+	<li id="menu-item-14852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14852"><a href="https://tim.blog/media/">Media Kit and Samples</a></li>
+	<li id="menu-item-14861" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14861"><a href="https://tim.blog/corrections/">Corrections? Please Fill Out This Form.</a></li>
+	<li id="menu-item-14863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14863"><a href="https://tim.blog/contact/">Contacts</a></li>
+	<li id="menu-item-14862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14862"><a href="https://tim.blog/jobs/">Jobs</a></li>
+</ul>
+</li>
+</ul></div>				</div>
+
+				<div id='nav-search'>
+					<div id="search-btn">
+						<i class="top-nav-icons search-icon search-icon-open"></i>
+						<i class="top-nav-icons search-icon search-icon-close"></i>
+					</div>
+					<form role="search" method="get" class="search-form" action="https://tim.blog/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" value="Search" name="s" title="Search for:" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}">
+	</label>
+	<input type="submit" class="search-submit" value="Search">
+</form>
+				</div>
+
+			</nav>
+			<!-- #site-navigation -->
+
+		</header><!-- #masthead -->
+	
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-41034" class="post-41034 post type-post status-publish format-standard has-post-thumbnail hentry category-the-tim-ferriss-show tag-dave-elitch tag-drummer tag-learning fhww_guest_name-dave-elitch">
+	<header class="entry-header">
+		<h1 class="entry-title">Dave Elitch — How to Get Out of Your Own Way&nbsp;(#348)</h1>
+
+					<span class="comments-link"><a href="https://tim.blog/2018/11/26/dave-elitch/#comments">17 Comments</a></span>
+		
+					<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-41034" class="share-facebook sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-41034" class="share-twitter sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-print"><a rel="nofollow noopener noreferrer" data-shared="" class="share-print sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-end"></li></ul></div></div></div>		
+					<div class="entry-meta">
+				<span class="byline">Written by <a href="https://tim.blog/author/tferriss/" title="Posts by Tim Ferriss" class="author url fn" rel="author">Tim Ferriss</a></span>
+									<span class="cat-links">
+					Topics: <a href="https://tim.blog/category/the-tim-ferriss-show/" rel="category tag">The Tim Ferriss Show</a>				</span>
+							</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div id="attachment_41035" style="width: 510px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-41035" data-attachment-id="41035" data-permalink="https://tim.blog/2018/11/26/dave-elitch/dave_elitch/#main" data-orig-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all" data-orig-size="3960,2640" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;1.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;Canon EOS 5D Mark III&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1497738445&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;50&quot;,&quot;iso&quot;:&quot;1600&quot;,&quot;shutter_speed&quot;:&quot;0.004&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Dave_Elitch" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=300" data-large-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=500" class="size-large wp-image-41035" src="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=500&strip=all" alt="" width="500" height="333" srcset="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=500 500w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=1000 1000w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=150 150w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=300 300w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=768 768w" sizes="(max-width: 500px) 100vw, 500px" /><p id="caption-attachment-41035" class="wp-caption-text">Photo by Dan Gillan</p></div>
+<p><strong><em>&#8220;Slow down. Do it again.&#8221;</em></strong> <em>— Dave Elitch</em></p>
+<p><strong>Dave Elitch</strong> (IG: <a href="https://www.instagram.com/daveelitch/" target="_blank" rel="noopener noreferrer">@daveelitch</a>) first garnered attention with his band Daughters of Mara&#8217;s debut album <em>I am Destroyer</em> in 2007, but his time touring with the American progressive rock band The Mars Volta in 2009-2010 is what really put him on the map. He has since worked with Miley Cyrus, Justin Timberlake, M83, The 1975, Juliette Lewis, Big Black Delta, as well as many others.</p>
+<p>Dave conducts master-class lectures worldwide and is a regular in the L.A. session scene, including performing on film scores for many major motion pictures. As an educator for the last 20 years, Dave has developed a reputation as <em>the</em> technique/body mechanic specialist who has helped many of the world&#8217;s top players and educators overcome physical and mental plateaus at his private studio in Los Angeles. His brand new online course, <em>Getting Out of Your Own Way</em>, is available now at <a href="https://www.daveelitch.com/" target="_blank" rel="noopener noreferrer">DaveElitch.com</a> (use the code FERRISS at checkout for a 25% off discount).</p>
+<p>Please enjoy this episode with Dave Elitch!</p>
+<p><em>Listen to the interview on <a href="https://itunes.apple.com/us/podcast/348-dave-elitch-how-to-get-out-of-your-own-way/id863897795?i=1000424576790&amp;mt=2" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>, <a href="https://open.spotify.com/show/5qSUyCrk9KR69lEiXbjwXM" target="_blank" rel="noopener noreferrer">Spotify</a>, <a href="https://stitcher.com/podcast/the-tim-ferriss-show" target="_blank" rel="noopener noreferrer">Stitcher</a>, <a href="https://overcast.fm/itunes863897795/the-tim-ferriss-show" target="_blank" rel="noopener noreferrer">Overcast</a>, or on your favorite podcast platform.</em></p>
+<p><i>You can find <a href="https://tim.blog/2018/11/28/the-tim-ferriss-show-transcripts-dave-elitch/" target="_blank" rel="noopener noreferrer">the transcript of this episode here</a>. Transcripts of <a href="https://tim.blog/2018/09/20/all-transcripts-from-the-tim-ferriss-show/" target="_blank" rel="noopener noreferrer">all episodes can be found here</a>.</i></p>
+<p><a href="https://itunes.apple.com/us/podcast/348-dave-elitch-how-to-get-out-of-your-own-way/id863897795?i=1000424576790&amp;mt=2"><img data-attachment-id="36407" data-permalink="https://tim.blog/2018/07/05/richard-branson-tony-robbins-ray-dalio-lessons/tf-itunesbutton-2/#main" data-orig-file="https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png?w=640" data-orig-size="244,71" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="TF-ItunesButton" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png?w=640?w=244" data-large-file="https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png?w=640?w=244" class="aligncenter wp-image-36407 size-full" src="https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png?w=640" alt="" srcset="https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png 244w, https://fhww.files.wordpress.com/2018/07/tf-itunesbutton.png?w=150 150w" sizes="(max-width: 244px) 100vw, 244px"   /></a><a href="https://www.stitcher.com/podcast/the-tim-ferriss-show"><img data-attachment-id="36404" data-permalink="https://tim.blog/2018/07/05/richard-branson-tony-robbins-ray-dalio-lessons/tf-stitcherbutton-2/#main" data-orig-file="https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png?w=640" data-orig-size="244,71" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="TF-StitcherButton" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png?w=640?w=244" data-large-file="https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png?w=640?w=244" class="aligncenter wp-image-36404 size-full" src="https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png?w=640" alt="" srcset="https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png 244w, https://fhww.files.wordpress.com/2018/07/tf-stitcherbutton.png?w=150 150w" sizes="(max-width: 244px) 100vw, 244px"   /></a><a href="https://open.spotify.com/show/5qSUyCrk9KR69lEiXbjwXM"><img data-attachment-id="36403" data-permalink="https://tim.blog/2018/07/05/richard-branson-tony-robbins-ray-dalio-lessons/tf-spotifybutton/#main" data-orig-file="https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png?w=640" data-orig-size="244,71" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="TF-SpotifyButton" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png?w=640?w=244" data-large-file="https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png?w=640?w=244" class="aligncenter wp-image-36403 size-full" src="https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png?w=640" alt="" srcset="https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png 244w, https://fhww.files.wordpress.com/2018/07/tf-spotifybutton.png?w=150 150w" sizes="(max-width: 244px) 100vw, 244px"   /></a></p>
+<div class="podcast-player"><div class="podcast-player-inner-wrap"><div class="title">#348: Dave Elitch — How to Get Out of Your Own Way</div><!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+<audio class="wp-audio-shortcode" id="audio-41034-1" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3?_=1" /><a href="https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3">https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3</a></audio><a class="download-link" download href="https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3"><span class="mejs-offscreen">Download</span></a></div></div>
+<ul>
+<li>Listen to it <a href="https://itunes.apple.com/us/podcast/348-dave-elitch-how-to-get-out-of-your-own-way/id863897795?i=1000424576790&amp;mt=2" target="_blank" rel="noopener noreferrer">on Apple Podcasts</a>.</li>
+<li>Stream <a href="https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3">by clicking here</a>.</li>
+<li>Download as an MP3 <a href="https://rss.art19.com/episodes/c4a6b972-c77a-44ed-a9a5-ecc9d7aaf52b.mp3">by right-clicking here</a> and choosing &#8220;save as.&#8221;</li>
+</ul>
+<hr />
+<p><strong>Further curious about <a href="https://tim.blog/2017/09/06/stewart-copeland/" target="_blank" rel="noopener noreferrer">how drummers see the world</a>? You&#8217;re not alone!</strong> — Make sure to listen to my conversation with <a href="https://tim.blog/2017/09/06/stewart-copeland/" target="_blank" rel="noopener noreferrer">Stewart Copeland</a>, drummer for The Police and son of a bona fide CIA operative! (Stream below or <a href="https://rss.art19.com/episodes/438e7af7-6545-48d1-99a3-f21bc272f2d0.mp3" target="_blank" rel="noopener noreferrer">right-click here</a> to download):</p>
+<div class="podcast-player"><div class="podcast-player-inner-wrap"><div class="title">#262: The CIA, The Police, and Other Adventures from Stewart Copeland</div><audio class="wp-audio-shortcode" id="audio-41034-2" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" src="https://rss.art19.com/episodes/438e7af7-6545-48d1-99a3-f21bc272f2d0.mp3?_=2" /><a href="https://rss.art19.com/episodes/438e7af7-6545-48d1-99a3-f21bc272f2d0.mp3">https://rss.art19.com/episodes/438e7af7-6545-48d1-99a3-f21bc272f2d0.mp3</a></audio><a class="download-link" download href="https://rss.art19.com/episodes/438e7af7-6545-48d1-99a3-f21bc272f2d0.mp3"><span class="mejs-offscreen">Download</span></a></div></div>
+<p><a href="https://fourhourworkweek.leadpages.net/leadbox/144965c73f72a2%3A14629fe93b46dc/5681034041491456/" target="_blank" rel="noopener noreferrer"><img class=" aligncenter" src="https://lh3.googleusercontent.com/r-xQ4okOhW5lhEayJNJ-F6oPGhxof6w06J5jwZn9k5KyxepuogP5IfDq1lmowDAImB5aECq6t1sOvVh7NlqjYSg=s0" alt="" /></a></p>
+<hr />
+<p><strong>This podcast is brought to you by <a href="https://www.freshbooks.com/pages/tim?ref=11864&amp;utm_source=tim-ferriss&amp;utm_medium=podcast&amp;utm_campaign=2016&amp;utm_content=email" target="_blank" rel="noopener noreferrer">FreshBooks</a>.</strong> FreshBooks is the #1 cloud bookkeeping software, which is used by a ton of the start-ups I advise and many of the contractors I work with. It is the easiest way to send invoices, get paid, track your time, and track your clients.</p>
+<p><strong><a href="https://www.freshbooks.com/pages/tim?ref=11864&amp;utm_source=tim-ferriss&amp;utm_medium=podcast&amp;utm_campaign=2016&amp;utm_content=email" target="_blank" rel="noopener noreferrer">FreshBooks</a></strong> tells you when your clients have viewed your invoices, helps you customize your invoices, track your hours, automatically organize your receipts, have late payment reminders sent automatically and much more.</p>
+<p>Right now you can get a <strong><a href="https://www.freshbooks.com/pages/tim?ref=11864&amp;utm_source=tim-ferriss&amp;utm_medium=podcast&amp;utm_campaign=2016&amp;utm_content=email" target="_blank" rel="noopener noreferrer">free month of complete and unrestricted use</a>.</strong> You do not need a credit card for the trial. To claim your free month and see how the brand new Freshbooks can change your business, <strong>go to <a href="https://www.freshbooks.com/pages/tim?ref=11864&amp;utm_source=tim-ferriss&amp;utm_medium=podcast&amp;utm_campaign=2016&amp;utm_content=email" target="_blank" rel="noopener noreferrer">FreshBooks.com/Tim</a> and enter &#8220;<a href="https://www.freshbooks.com/pages/tim?ref=11864&amp;utm_source=tim-ferriss&amp;utm_medium=podcast&amp;utm_campaign=2016&amp;utm_content=email" target="_blank" rel="noopener noreferrer">Tim Ferriss</a>&#8221; in the &#8220;how did you hear about us&#8221; section.</strong></p>
+<hr />
+<p><strong>This podcast is also brought to you by <a href="http://audible.com/tim" target="_blank" rel="noopener noreferrer">Audible</a>.</strong> I have used <a href="http://audible.com/tim" target="_blank" rel="noopener noreferrer">Audible</a> for years, and I love audiobooks. I have a few to recommend:</p>
+<ol>
+<li><a href="https://www.audible.com/pd/Sci-Fi-Fantasy/Ready-Player-One-Audiobook/B005FRGT44/?tag=offsitoftimfe-20" target="_blank" rel="noopener noreferrer">Ready Player One</a> by Ernest Cline</li>
+<li><a href="https://www.audible.com/pd/Nonfiction/The-Tao-of-Seneca-Audiobook/B01AIXEJKU/?tag=offsitoftimfe-20" target="_blank" rel="noopener noreferrer">The Tao of Seneca</a> by Seneca</li>
+<li><a href="http://www.audible.com/pd/Teens/The-Graveyard-Book-Full-Cast-Production-Audiobook/B00LXHQO22/?tag=offsitoftimfe-20" target="_blank" rel="noopener noreferrer">The Graveyard Book</a> by Neil Gaiman</li>
+<li><a href="https://www.audible.com/pd/Self-Development/Nonviolent-Communication-Audiobook/B00TJJNSQG/?tag=offsitoftimfe-20" target="_blank" rel="noopener noreferrer">Nonviolent Communication</a> by Marshall B. Rosenberg</li>
+</ol>
+<p>All you need to do to get <strong><a href="http://audible.com/tim" target="_blank" rel="noopener noreferrer">three months of Audible for just $6.95 a month is visit Audible.com/Tim</a></strong> or <strong>text TIM to 500500</strong> to get started today.</p>
+<hr />
+<p><strong style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">QUESTION(S) OF THE DAY: <strong>What was your favorite quote or lesson from this episode?</strong> Please let me know <a href="#comments">in the comments</a>.</strong></p>
+<p>Scroll below for links and show notes&#8230;</p>
+<p><span id="more-41034"></span></p>
+<h3>SELECTED LINKS FROM THE EPISODE</h3>
+<p><strong>Connect with Dave Elitch:</strong></p>
+<p style="text-align:center;"><a href="https://www.daveelitch.com/" target="_blank" rel="noopener noreferrer">Website</a> | <a href="https://twitter.com/DaveElitch" target="_blank" rel="noopener noreferrer">Twitter</a> | <a href="https://www.instagram.com/daveelitch/" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://www.facebook.com/dave.elitch" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+<ul>
+<li>Dave&#8217;s <a href="https://www.daveelitch.com/" target="_blank" rel="noopener noreferrer"><em>Getting Out of Your Own Way</em> Course</a> (use the code <strong>FERRISS</strong> at checkout for a 25% off discount)</li>
+<li><a href="https://www.discogs.com/Daughters-Of-Mara-I-Am-Destroyer/release/9150375" target="_blank" rel="noopener noreferrer">I Am Destroyer</a> by Daughters Of Mara</li>
+<li><a href="https://twitter.com/themarsvolta" target="_blank" rel="noopener noreferrer">The Mars Volta</a></li>
+<li><a href="http://ilovem83.com/" target="_blank" rel="noopener noreferrer">M83</a></li>
+<li><a href="https://the1975.com/" target="_blank" rel="noopener noreferrer">The 1975</a></li>
+<li><a href="http://bigblackdelta.com/" target="_blank" rel="noopener noreferrer">Big Black Delta</a></li>
+<li><a href="https://dangerousminds.net/comments/do_drummers_have_different_brains_from_the_rest_of_us" target="_blank" rel="noopener noreferrer">Do Drummers Have Different Brains from the Rest of Us?</a> by Richard Metzger, Dangerous Minds</li>
+<li><a href="https://daveelitch.myshopify.com/collections/shop/products/slow-down-t-shirt" target="_blank" rel="noopener noreferrer">Dave&#8217;s Slow Down/Do It Again T-Shirt</a></li>
+<li><a href="https://makingmusicmag.com/anatomy-of-a-drum-kit/" target="_blank" rel="noopener noreferrer">The Anatomy of a Drum Kit</a>, Making Music</li>
+<li><a href="https://youtu.be/dYnGtRMDqpw" target="_blank" rel="noopener noreferrer">Dave Elitch On Having Good Posture</a>, DrumChannel.com</li>
+<li><a href="https://www.acdc.com/" target="_blank" rel="noopener noreferrer">AC/DC</a></li>
+<li><a href="https://youtu.be/jRDpaMrdVSc" target="_blank" rel="noopener noreferrer">Beginner Drum Lesson: The Money Beat</a> by Chris Atchley</li>
+<li><a href="https://youtu.be/PeYUQqDhL9E" target="_blank" rel="noopener noreferrer">The Mars Volta Goliath Dave Elitch Drum Cam</a> Video</li>
+<li><a href="https://artofmemory.com/wiki/How_to_Build_a_Memory_Palace" target="_blank" rel="noopener noreferrer">How to Build a Memory Palace</a>, ArtOfMemory.com</li>
+<li><a href="https://www.metronomeonline.com/" target="_blank" rel="noopener noreferrer">Metronome Online</a></li>
+<li><a href="https://tim.blog/2017/05/15/fear-setting/" target="_blank" rel="noopener noreferrer">Fear-Setting: The Most Valuable Exercise I Do Every Month</a> by Tim Ferriss, TED 2017</li>
+<li><a href="https://tim.blog/2018/10/29/sam-harris-waking-up/" target="_blank" rel="noopener noreferrer">Sam Harris, Ph.D. &#8212; How to Master Your Mind, The Tim Ferriss Show</a> (with guided meditation bonus)</li>
+<li><a href="http://antemasque.com/" target="_blank" rel="noopener noreferrer">Antemasque</a></li>
+<li><a href="https://redhotchilipeppers.com/" target="_blank" rel="noopener noreferrer">Red Hot Chili Peppers</a></li>
+<li><a href="http://www.killerbekilled.com/" target="_blank" rel="noopener noreferrer">Killer Be Killed</a></li>
+<li><a href="https://tim.blog/2014/04/27/tim-ferriss-show-kelly-starret-and-dr-justin-mager/#comments" target="_blank" rel="noopener noreferrer">Kelly Starrett and Dr. Justin Mager</a>, The Tim Ferriss Show</li>
+<li><a href="https://www.amazon.com/Inner-Game-Tennis-Classic-Performance/dp/0679778314/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543085736&amp;sr=8-2&amp;keywords=the+inner+game+of+tennis&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=6763281122f0196bbcaddaada2e6944f&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Inner Game of Tennis: The Classic Guide to the Mental Side of Peak Performance</a> by W. Timothy Gallwey</li>
+<li><a href="https://www.amazon.com/Inner-Game-Music-Barry-Green/dp/0385231261/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543097174&amp;sr=8-1&amp;keywords=The+Inner+Game+of+Music&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=40417381983dc3a4940c9125bed14b10&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Inner Game of Music</a> by Barry Green</li>
+<li><a href="http://www.zen-buddhism.net/" target="_blank" rel="noopener noreferrer">What is Zen? What is Buddhism?</a>, zen-buddhism.net</li>
+<li><a href="https://www.amazon.com/dp/B000GJPL1S/ref=as_li_ss_tl?ref=sr_1_1_acs_kn_imdb_pa_dp&amp;qid=1543183876&amp;sr=1-1-acs&amp;autoplay=0&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=3202f6030aae4eeb976dbd5f58e06e9c&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Matrix</a></li>
+<li><a href="https://www.wikihow.com/Hold-a-Drumstick" target="_blank" rel="noopener noreferrer">4 Ways to Hold a Drumstick</a>, wikiHow</li>
+<li><a href="https://www.amazon.com/Facing-Love-Addiction-Giving-Yourself/dp/0062506048/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543086325&amp;sr=8-3&amp;keywords=facing+love+addiction&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=ad144aaeec690ca4aaa10d15e66b1688&amp;language=en_US" target="_blank" rel="noopener noreferrer">Facing Love Addiction: Giving Yourself the Power to Change the Way You Love</a> by Pia Mellody, Andrea Wells Miller, and J. Keith Miller</li>
+<li><a href="https://www.amazon.com/Medium-Massage-Marshall-McLuhan/dp/1584230703/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543097787&amp;sr=8-1&amp;keywords=The+Medium+is+the+Message&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=bed9574c209cc29b3543ca879401c1fb&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Medium is the Massage: An Inventory of Effects</a> by Marshall McLuhan and Quentin Fiore</li>
+<li><a href="https://www.amazon.com/Believe/dp/B001F3J598/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543098194&amp;sr=8-3&amp;keywords=Do+you+Believe+in+Love&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=fbd236c50a2f842139b409f7957e9e1b&amp;language=en_US" target="_blank" rel="noopener noreferrer">Believe</a> by Cher</li>
+<li><a href="https://www.newyorker.com/magazine/2008/06/09/the-gerbils-revenge" target="_blank" rel="noopener noreferrer">The Gerbil&#8217;s Revenge: Auto-Tune Corrects a Singer&#8217;s Pitch. It Also Distorts &#8212; a Grand Tradition in Pop.</a> by Sasha Frere-Jones, The New Yorker</li>
+<li><a href="https://www.wikiaudio.org/beat-detective/" target="_blank" rel="noopener noreferrer">Beat Detective</a>, WikiAudio</li>
+<li><a href="https://youtu.be/eJ3RzGoQC4s" target="_blank" rel="noopener noreferrer">The Century of the Self</a></li>
+<li><a href="https://www.bbc.co.uk/programmes/p04b183c" target="_blank" rel="noopener noreferrer">HyperNormalisation</a></li>
+<li><a href="https://www.amazon.com/Propaganda-Edward-Bernays/dp/0970312598/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543182869&amp;sr=8-1&amp;keywords=Edward+Bernays&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=67ca92d6978e0056127a203565e8bced&amp;language=en_US" target="_blank" rel="noopener noreferrer">Propaganda</a> by Edward Bernays</li>
+<li><a href="https://www.artofmanliness.com/articles/sources-of-existential-angst/" target="_blank" rel="noopener noreferrer">Sources of Existential Angst by Brett and Kate McKay</a>, The Art of Manliness</li>
+<li>&#8220;Man is the only animal for whom his own existence is a problem which he has to solve and from which he cannot escape.&#8221; &#8212; <a href="https://en.wikipedia.org/wiki/Erich_Fromm" target="_blank" rel="noopener noreferrer">Erich Fromm</a></li>
+<li><a href="https://www.smashingpumpkins.com/" target="_blank" rel="noopener noreferrer">The Smashing Pumpkins</a></li>
+<li><a href="https://www.nytimes.com/2017/12/18/sports/climb-mount-everest.html" target="_blank" rel="noopener noreferrer">You Want to Climb Mount Everest? Here&#8217;s What It Takes</a> by John Branch, The New York Times</li>
+<li><a href="https://www.amazon.com/Breaking-Habit-Being-Yourself-Create/dp/1401938094/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=2589e71d0cc3d1ddead6740a60ca9505&amp;language=en_US" target="_blank" rel="noopener noreferrer">Breaking The Habit of Being Yourself: How to Lose Your Mind and Create a New One</a> by Dr. Joe Dispenza</li>
+<li><a href="https://www.amazon.com/Mindfulness-25th-anniversary-Merloyd-Lawrence/dp/0738217999/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543159625&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=a67b8e88ba5ed0adf5f8141af153f69b&amp;language=en_US" target="_blank" rel="noopener noreferrer">Mindfulness</a> by Ellen J. Langer</li>
+<li><a href="https://onbeing.org/programs/ellen-langer-science-of-mindlessness-and-mindfulness-nov2017/" target="_blank" rel="noopener noreferrer">Science of Mindlessness and Mindfulness with Ellen Langer and Krista Tippett</a>, On Being</li>
+<li><a href="https://www.amazon.com/Secret-Rhonda-Byrne/dp/1582701709/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543159993&amp;sr=8-2&amp;keywords=The+Secret&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=ff2a2beaf885c8926cc27fa1035c8387&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Secret</a> by Rhonda Byrne</li>
+<li><a href="https://www.amazon.com/Zero-Remastered-2012-Explicit/dp/B00AOMUGEO/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543164957&amp;sr=8-7&amp;keywords=smashing+pumpkins+Zero&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=43d5151fd011ce7f7c8adaee1fe2f5cf&amp;language=en_US" target="_blank" rel="noopener noreferrer">Zero</a> by The Smashing Pumpkins</li>
+<li><a href="https://www.amazon.com/Bullet-Butterfly-Wings-Remastered-2012/dp/B00AOMN376/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543164994&amp;sr=8-1&amp;keywords=Bullet+with+Butterfly+Wings&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=69dc1dd901d13fda5abe27c4c6bb5aec&amp;language=en_US" target="_blank" rel="noopener noreferrer">Bullet with Butterfly Wings</a> by The Smashing Pumpkins</li>
+<li><a href="https://www.amazon.com/Topo-Chico-Water-Mineral-Bottles/dp/B001SBAG36/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=e45145c45877508997e469426ed1924a&amp;language=en_US" target="_blank" rel="noopener noreferrer">Topo Chico</a></li>
+<li><a href="https://dangerousminds.net/comments/brian_eno_and_peter_schmidts_oblique_strategies_the_original_handwritt" target="_blank" rel="noopener noreferrer">Brian Eno and Peter Schmidt&#8217;s Oblique Strategies, the Original Handwritten Cards</a> by Martin Schneider, Dangerous Minds</li>
+<li><a href="https://youtu.be/BonWfTW7jKc" target="_blank" rel="noopener noreferrer">Do the Strand</a> by Roxy Music</li>
+<li><a href="https://www.amazon.com/Ambient-Music-Airports-Brian-Eno/dp/B000TERDJS/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543166421&amp;sr=8-1&amp;keywords=music+for+airports&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=4266444ea982d363a8aba76789dc08b0&amp;language=en_US" target="_blank" rel="noopener noreferrer">Ambient 1/Music For Airports</a> by Brian Eno</li>
+<li><a href="http://hornmatters.com/2009/07/the-space-between-the-notes/" target="_blank" rel="noopener noreferrer">The Space Between the Notes</a> by Bruce Hembd, Horn Matters</li>
+<li><a href="https://www.amazon.com/Like-Father-Daughter/dp/B077M2DL7D/ref=as_li_ss_tl?s=instant-video&amp;ie=UTF8&amp;qid=1543183750&amp;sr=1-2&amp;keywords=Taxi&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=d2dfcf123b9c0e01dabda63b4d091198&amp;language=en_US" target="_blank" rel="noopener noreferrer">Taxi</a></li>
+<li><a href="https://www.amazon.com/Taxi-Driver-Cybill-Shepherd/dp/B000I9U7C4/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543183736&amp;sr=8-2&amp;keywords=Taxi+Driver&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=0060811a0bd4a3c151ec9fbcdf707d58&amp;language=en_US" target="_blank" rel="noopener noreferrer">Taxi Driver</a></li>
+<li><a href="https://youtu.be/ldIwEG9xQ-M" target="_blank" rel="noopener noreferrer">Arnold Schwarzenegger &#8212; A Great Man</a> by Bill Burr</li>
+<li><a href="https://youtu.be/cBCi-pOE5NQ" target="_blank" rel="noopener noreferrer">What Is Embouchure? Saxophone Lessons</a>, Howcast</li>
+<li>Searching for Bobby Fischer: <a href="http://www.amazon.com/exec/obidos/ASIN/0394544552/offsitoftimfe-20" target="_blank" rel="noopener noreferrer">book</a> and <a href="http://www.amazon.com/exec/obidos/ASIN/B0018RFLQ2/offsitoftimfe-20" target="_blank" rel="noopener noreferrer">movie</a></li>
+<li><a href="https://www.amazon.com/Art-Learning-Journey-Optimal-Performance/dp/0743277465/ref=as_li_ss_tl?_encoding=UTF8&amp;me=&amp;qid=1543177376&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=7a86a9941308be876105593d3e0855dc&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Art of Learning: An Inner Journey to Optimal Performance</a> by Josh Waitzkin</li>
+<li><a href="https://www.facebook.com/thetimferrissexperiment/videos/brazilian-jiu-jitsu/472027749828725/" target="_blank" rel="noopener noreferrer">Brazilian Jiu-Jitsu</a>, The Tim Ferriss Experiment</li>
+<li><a href="http://www.ledzeppelin.com/" target="_blank" rel="noopener noreferrer">Led Zeppelin</a></li>
+<li><a href="http://johnbonham.co.uk/drumsetup/drums.html" target="_blank" rel="noopener noreferrer">John Bonham&#8217;s Drum Set Up</a>, JohnBonham.co.uk</li>
+<li><a href="https://www.amazon.com/Wild-Found-Pacific-Crest-Trail/dp/0307592731/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543178044&amp;sr=1-4&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=6f30b70d7ee172b9c8bcf6f766768285&amp;language=en_US" target="_blank" rel="noopener noreferrer">Wild: From Lost to Found on the Pacific Crest Trail</a> by Cheryl Strayed</li>
+<li><a href="https://www.amazon.com/Hour-Body-Uncommon-Incredible-Superhuman/dp/030746363X/ref=as_li_ss_tl?s=books&amp;ie=UTF8&amp;qid=1543178144&amp;sr=1-3&amp;keywords=The+4-Hour+Body&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=6151f6e3f3ce369e96e57149eb561555&amp;language=en_US" target="_blank" rel="noopener noreferrer">The 4-Hour Body: An Uncommon Guide to Rapid Fat-Loss, Incredible Sex, and Becoming Superhuman</a> by Timothy Ferriss</li>
+<li><a href="https://www.amazon.com/Open-Autobiography-Andre-Agassi/dp/0307268195/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543178889&amp;sr=1-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=451d92de2ec6f3256597d52e4f28141b&amp;language=en_US" target="_blank" rel="noopener noreferrer">Open</a> by Andre Agassi</li>
+<li><a href="https://www.amazon.com/Trolls-Anna-Kendrick/dp/B01M8GGL9M/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543179007&amp;sr=8-3&amp;keywords=Trolls+movie&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=a25dd511880e5d635808336e1db1c79e&amp;language=en_US" target="_blank" rel="noopener noreferrer">Trolls</a></li>
+<li><a href="https://www.amazon.com/dp/B01N0Q1PUJ/ref=as_li_ss_tl?ref=sr_1_1_acs_kn_imdb_pa_dp&amp;qid=1543179027&amp;sr=1-1-acs&amp;autoplay=0&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=bdf3e24541736ee6d0edef1cb88e077d&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Book of Love</a></li>
+<li><a href="https://www.amazon.com/dp/B06XDH6SZP/ref=as_li_ss_tl?ref=sr_1_1_acs_kn_imdb_pa_dp&amp;qid=1543179064&amp;sr=1-1-acs&amp;autoplay=0&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=01cea0a892472541b28e8bd632793e1e&amp;language=en_US" target="_blank" rel="noopener noreferrer">Logan</a></li>
+<li><a href="https://www.amazon.com/dp/B00QUEE4GQ/ref=as_li_ss_tl?ref=sr_1_1_acs_kn_imdb_pa_dp&amp;qid=1543179093&amp;sr=1-1-acs&amp;autoplay=0&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=2d55fec6e3e399b090e63a5b294a5f17&amp;language=en_US" target="_blank" rel="noopener noreferrer">St. Vincent</a></li>
+<li><a href="https://www.amazon.com/Divergent-Shailene-Woodley/dp/B00J59ZKV6/ref=as_li_ss_tl?s=instant-video&amp;ie=UTF8&amp;qid=1543179121&amp;sr=1-1&amp;keywords=Divergent&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=b775424c9ecae707ae5688bc8d62d629&amp;language=en_US" target="_blank" rel="noopener noreferrer">Divergent</a></li>
+<li><a href="https://www.amazon.com/Divergent-Insurgent-Shailene-Woodley/dp/B00YI7OR4G/ref=as_li_ss_tl?s=instant-video&amp;ie=UTF8&amp;qid=1543179172&amp;sr=1-2&amp;keywords=Insurgent&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=53789d64c815b488b5bb107082f0b390&amp;language=en_US" target="_blank" rel="noopener noreferrer">Insurgent</a></li>
+<li><a href="https://www.amazon.com/Zen-Art-Archery-Eugen-Herrigel/dp/0375705090/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543179341&amp;sr=8-2&amp;keywords=Zen+in+the+Art+of+Archery&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=2a447d385de3204a630d3c0287a766d2&amp;language=en_US" target="_blank" rel="noopener noreferrer">Zen in the Art of Archery</a> by Eugen Herrigel</li>
+<li><a href="https://www.amazon.com/Horton-Hears-Who-Dr-Seuss/dp/0394800788/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543179424&amp;sr=8-3&amp;keywords=Horton+Hears+a+Who?&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=37fe3e9f8c03d8ea829bca43c65320bb&amp;language=en_US" target="_blank" rel="noopener noreferrer">Horton Hears a Who!</a> by Dr. Seuss</li>
+<li><a href="https://www.amazon.com/Generation-X-Tales-Accelerated-Culture/dp/031205436X/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087166&amp;sr=8-2&amp;keywords=Generation+X&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=4c964f74a0d17bd5c1cde3b21ad5b14c&amp;language=en_US" target="_blank" rel="noopener noreferrer">Generation X: Tales for an Accelerated Culture</a> by Douglas Coupland</li>
+<li><a href="http://www.funtrivia.com/askft/Question93884.html" target="_blank" rel="noopener noreferrer">Which Writer Coined the Phrase Generation X?</a>, Fun Trivia</li>
+</ul>
+<p><strong>Book Recommendations by Dave&#8217;s Therapist:</strong></p>
+<ul>
+<li><a href="https://www.amazon.com/When-You-Refrigerator-Pull-Chair/dp/0786863951/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543085412&amp;sr=8-2&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=6286d209b91d4d96c26d23e57e2c5fa1&amp;language=en_US" target="_blank" rel="noopener noreferrer">When You Eat at the Refrigerator, Pull Up a Chair: 50 Ways to Feel Thin, Gorgeous, and Happy (When You Feel Anything But)</a> by Geneen Roth and Anne Lamott</li>
+<li><a href="https://www.amazon.com/Hell-Back-Have-Feelings-Sober/dp/0615330835/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=7f431e94f197b08f8a25bd67542e7fef&amp;language=en_US" target="_blank" rel="noopener noreferrer">To Hell &amp; Back: How to Have Feelings &amp; Stay Sober at the Same Time</a> by Jasmin Rogg</li>
+<li><a href="https://www.amazon.com/Recovering-Spirituality-Achieving-Emotional-Spiritual/dp/1616490896/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543085697&amp;sr=1-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=5adaaf6f883a0347c65f25e166046997&amp;language=en_US" target="_blank" rel="noopener noreferrer">Recovering Spirituality: Achieving Emotional Sobriety in Your Spiritual Practice</a> by Ingrid Mathieu</li>
+<li><a href="https://www.amazon.com/Drama-Gifted-Child-Search-True/dp/0465012612/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543085829&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=e79e1e7cae5c861495975eb7c8000529&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Drama of the Gifted Child: The Search for the True Self, Third Edition</a> by Alice Miller</li>
+<li><a href="https://www.amazon.com/Alcoholics-Original-Life-Changing-Landmark-Deluxe/dp/039917186X/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543085878&amp;sr=8-1-spons&amp;keywords=alcoholics+anonymous+big+book&amp;psc=1&amp;linkCode=sl1&amp;tag=offsitoftimfe-20&amp;linkId=1ebe6c4813f2e74825b6e0fb107176c3&amp;language=en_US" target="_blank" rel="noopener noreferrer">Alcoholics Anonymous</a> by Bill W.</li>
+<li><a href="https://www.amazon.com/Systems-Balance-Natural-Prescription-Healthy/dp/155874925X/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=772f193dc1fdc81d6be541c4f0d4aa14&amp;language=en_US" target="_blank" rel="noopener noreferrer">The 7 Systems of Balance: A Natural Prescription for Healthy Living in a Hectic World</a> by Paul Sorgi</li>
+<li><a href="https://www.amazon.com/Bradshaw-Family-Creating-Solid-Self-Esteem-ebook/dp/B00AM1UAWU/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543086284&amp;sr=8-1&amp;keywords=bradshaw+on+the+family&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=4d261a5560148893e0b8b7d9ca1db927&amp;language=en_US" target="_blank" rel="noopener noreferrer">Bradshaw On: The Family: A New Way of Creating Solid Self-Esteem</a> by John Bradshaw</li>
+<li><a href="https://www.amazon.com/Therapy-Single-Parents-Constructionist-Approach/dp/0789004070/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=8cd11d698459997a4d853c365d67f335&amp;language=en_US" target="_blank" rel="noopener noreferrer">Therapy with Single Parents: A Social Constructionist Approach</a> by Joan D Atwood and Frank Genovese</li>
+<li><a href="https://www.amazon.com/Anxiety-Book-Developing-Strength-Face/dp/157322376X/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=6265ca0211eb3bc057ba038008addc61&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Anxiety Book: Developing Strength in the Face of Fear</a> by Jonathan Davidson and Henry Dreher</li>
+<li><a href="https://www.amazon.com/Loving-What-Four-Questions-Change/dp/1400045371/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543086593&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=07e712b8be1528a031a9e79c67b19b5c&amp;language=en_US" target="_blank" rel="noopener noreferrer">Loving What Is: Four Questions That Can Change Your Life</a> by Byron Katie and Stephen Mitchell</li>
+<li><a href="https://www.amazon.com/Becoming-Your-Own-Parent-Dysfunctional/dp/0553347888/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543086636&amp;sr=8-1&amp;keywords=becoming+your+own+parent&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=7fbe9607e3e6f415830e45c33334fe30&amp;language=en_US" target="_blank" rel="noopener noreferrer">Becoming Your Own Parent: The Solution for Adult Children of Alcoholic and Other Dysfunctional Families</a> by Dennis Wholey</li>
+</ul>
+<p><strong>Further Book Recommendations by Dave:</strong></p>
+<ul>
+<li><a href="https://www.amazon.com/World-Lit-Only-Fire-Renaissance/dp/0316545562/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087549&amp;sr=8-1&amp;keywords=A+World+Lit+Only+By+Fire+by+William+Manchester&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=55e630eae0b37e2b50881f8c67920b47&amp;language=en_US" target="_blank" rel="noopener noreferrer">A World Lit Only by Fire: The Medieval Mind and the Renaissance &#8212; Portrait of an Age</a> by William Manchester</li>
+<li><a href="https://www.amazon.com/Mans-Search-Meaning-Viktor-Frankl/dp/0807060100/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543087505&amp;sr=8-2&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=c96f7908a34c528590ded7d13f77a214&amp;language=en_US" target="_blank" rel="noopener noreferrer">Man&#8217;s Search For Meaning</a> by Viktor E. Frankl</li>
+<li><a href="https://www.amazon.com/Brutality-Fact-Interviews-Sylvester-Paperback/dp/B00IJ0V6ZG/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087365&amp;sr=8-4&amp;keywords=The+Brutality+of+Fact&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=ae1e2ebd25a0a2b947625b544e88d1f5&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Brutality of Fact: Interviews with Francis Bacon</a> by David Sylvester</li>
+<li><a href="https://www.amazon.com/Society-Spectacle-Guy-DEBORD/dp/0934868077/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087334&amp;sr=8-1&amp;keywords=Society+of+the+Spectacle&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=5e64677d54af4d2a1dbb15022b7c250d&amp;language=en_US" target="_blank" rel="noopener noreferrer">Society of the Spectacle</a> by Guy Debord</li>
+<li><a href="https://www.amazon.com/Power-Myth-Joseph-Campbell/dp/0385418868/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087305&amp;sr=8-1&amp;keywords=The+Power+of+Myth&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=c3268718275356912feac8a7b7880e2a&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Power of Myth</a> by Joseph Campbell</li>
+<li><a href="https://www.amazon.com/Awakening-Intelligence-Jiddu-Krishnamurti/dp/0060648341/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543087259&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=fb8b384e177cd2102cabb16c4c4d5ae4&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Awakening of Intelligence</a> by J. Krishnamurti</li>
+<li><a href="https://www.amazon.com/Image-Guide-Pseudo-Events-America/dp/0679741801/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087224&amp;sr=8-1&amp;keywords=The+Image+by+Daniel+Boorstin&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=430d0642a02abd98c9deedee8a137f40&amp;language=en_US" target="_blank" rel="noopener noreferrer">The Image: A Guide to Pseudo-Events in America</a> by Daniel J. Boorstin</li>
+<li><a href="https://www.amazon.com/Brief-History-Everything-20th-Anniversary/dp/1611804523/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087199&amp;sr=8-1&amp;keywords=A+Brief+History+of+Everything+by+Ken+Wilber&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=abb1c4b0508c97fa33e66d0dc69bc047&amp;language=en_US" target="_blank" rel="noopener noreferrer">A Brief History of Everything</a> by Ken Wilber</li>
+<li><a href="https://www.amazon.com/Tenth-December-Stories-George-Saunders/dp/0812993802/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543087125&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=3a77cb268e7c23ae2fbb9f62f7662d8a&amp;language=en_US" target="_blank" rel="noopener noreferrer">Tenth of December: Stories</a> by George Saunders</li>
+<li><a href="https://www.amazon.com/Ways-Seeing-Based-Television-Penguin/dp/0140135154/ref=as_li_ss_tl?ie=UTF8&amp;qid=1543087095&amp;sr=8-1&amp;keywords=Ways+of+Seeing+by+John+Berger&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=de99148bfc38f12c545c970bb5266674&amp;language=en_US" target="_blank" rel="noopener noreferrer">Ways of Seeing</a> by John Berger</li>
+<li><a href="https://www.amazon.com/Will-You-Please-Be-Quiet/dp/0679735690/ref=as_li_ss_tl?_encoding=UTF8&amp;qid=1543087063&amp;sr=8-1&amp;linkCode=ll1&amp;tag=offsitoftimfe-20&amp;linkId=c4ed70f45064f1cdd1e93af7aaf7112e&amp;language=en_US" target="_blank" rel="noopener noreferrer">Will You Please Be Quiet, Please?</a> by Raymond Carver</li>
+</ul>
+<h3>SHOW NOTES</h3>
+<ul>
+<li>Who is Dave, and why is he in my house? [04:28]</li>
+<li>&#8220;Slow down. Do it again.&#8221; [08:49]</li>
+<li>How Dave quickly identified and alleviated one of my greatest sources of discomfort behind a drum kit. [10:48]</li>
+<li>My first introduction to Dave and his capacity for monster drumming in The Mars Volta, and why he&#8217;s known as a bit of a mercenary cleaner on the music industry tour circuit. [13:13]</li>
+<li>How does Dave prepare to tour with a band &#8212; often on last-minute notice? It&#8217;s actually not dissimilar to how I prepare for speeches. [18:55]</li>
+<li>What does the day of the first show of a mercenary tour look like for Dave? What advice or rituals does he suggest to others who find themselves facing a similarly stressful trial &#8212; musical or otherwise? [31:21]</li>
+<li>How mastering or understanding the inner workings of one discipline &#8212; whether it&#8217;s drumming, tennis, Zen Buddhism, or something else altogether &#8212; can extend to solving the problems posed by countless other disciplines. [39:03]</li>
+<li>A book exchange that took place between Dave and his therapist. [48:40]</li>
+<li>What Marshall McLuhan might have told us about the influence of Auto-Tune on modern music. [50:01]</li>
+<li>Who really sculpted our world&#8217;s love affair with consumerism: Sigmund Freud&#8217;s nephew or Edward Bernays&#8217; uncle? These Adam Curtis documentaries should shed some light on the answer (while blowing a few minds in the process). [55:24]</li>
+<li>Visual art, coping with met expectations of success that lead to burnout, and microwave manifestation. [1:03:36]</li>
+<li>Oblique Strategies: how Brian Eno and Peter Schmidt can help us reconsider perspective and possibly course correct. [1:17:00]</li>
+<li>How has a failure set Dave up for later success &#8212; and how did he reframe this failure to recognize it as a runway to that success? [1:25:28]</li>
+<li>What makes Dave doubt the choices that led him to where he is today? [1:32:10]</li>
+<li>It&#8217;s been said by some of Dave&#8217;s most well-known students that he excels in teaching patience. Why might drums make this an easier feat than if he taught saxophone? [1:39:50]</li>
+<li>What would Dave&#8217;s billboard say? [1:44:46]</li>
+<li>If Bill Burr doesn&#8217;t approach comedy like Sam Kinison, why should he approach drumming like John Bonham? [1:48:11]</li>
+<li>Does Dave have any unusual habits or love of weird things &#8212; Himalayan or otherwise? [1:50:29]</li>
+<li>Dave didn&#8217;t begin therapy until he was in his thirties. What made him start, and what keeps him going? [1:52:31]</li>
+<li>Dave has contributed to quite a few film scores. What does that process look like from his perspective? [2:02:38]</li>
+<li>Book recommendations and final thoughts. [2:04:30]</li>
+</ul>
+<h3>PEOPLE MENTIONED</h3>
+<ul>
+<li><a href="https://www.instagram.com/chamberdrums/" target="_blank" rel="noopener noreferrer">Jimmy Chamberlin</a></li>
+<li><a href="https://twitter.com/mileycyrus" target="_blank" rel="noopener noreferrer">Miley Cyrus</a></li>
+<li><a href="https://twitter.com/jtimberlake" target="_blank" rel="noopener noreferrer">Justin Timberlake</a></li>
+<li><a href="https://twitter.com/JulietteLewis" target="_blank" rel="noopener noreferrer">Juliette Lewis</a></li>
+<li><a href="https://www.biography.com/people/hermann-rorschach-20821095" target="_blank" rel="noopener noreferrer">Hermann Rorschach</a></li>
+<li><a href="https://twitter.com/orlprojects/" target="_blank" rel="noopener noreferrer">Omar Rodriguez-Lopez</a></li>
+<li><a href="https://www.iep.utm.edu/cicero/" target="_blank" rel="noopener noreferrer">Cicero</a></li>
+<li><a href="https://twitter.com/BearGrylls" target="_blank" rel="noopener noreferrer">Bear Grylls</a></li>
+<li><a href="https://samharris.org/" target="_blank" rel="noopener noreferrer">Sam Harris</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Timothy_Gallwey" target="_blank" rel="noopener noreferrer">Timothy Gallwey</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Gautama_Buddha" target="_blank" rel="noopener noreferrer">Gautama Buddha</a></li>
+<li><a href="https://twitter.com/cedricbixler/" target="_blank" rel="noopener noreferrer">Cedric Bixler Zavala</a></li>
+<li><a href="https://twitter.com/flea333" target="_blank" rel="noopener noreferrer">Flea</a></li>
+<li><a href="https://tim.blog/2014/04/27/tim-ferriss-show-kelly-starret-and-dr-justin-mager/" target="_blank" rel="noopener noreferrer">Kelly Starrett</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Neo_(The_Matrix)" target="_blank" rel="noopener noreferrer">Neo</a></li>
+<li><a href="http://www.piamellody.com/" target="_blank" rel="noopener noreferrer">Pia Mellody</a></li>
+<li><a href="https://www.marshallmcluhan.com/" target="_blank" rel="noopener noreferrer">Marshall McLuhan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Quentin_Fiore" target="_blank" rel="noopener noreferrer">Quentin Fiore</a></li>
+<li><a href="http://digifindingaids.cjh.org/?pID=431033" target="_blank" rel="noopener noreferrer">Jerome Agel</a></li>
+<li><a href="https://twitter.com/cher" target="_blank" rel="noopener noreferrer">Cher</a></li>
+<li><a href="https://twitter.com/TPAIN" target="_blank" rel="noopener noreferrer">T-Pain</a></li>
+<li><a href="https://drakeofficial.com/" target="_blank" rel="noopener noreferrer">Drake</a></li>
+<li><a href="http://memory-alpha.wikia.com/wiki/Spock" target="_blank" rel="noopener noreferrer">Spock</a></li>
+<li><a href="http://adele.com/home/" target="_blank" rel="noopener noreferrer">Adele</a></li>
+<li><a href="https://jackjohnsonmusic.com/" target="_blank" rel="noopener noreferrer">Jack Johnson</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Adam_Curtis" target="_blank" rel="noopener noreferrer">Adam Curtis</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Edward_Bernays" target="_blank" rel="noopener noreferrer">Edward Bernays</a></li>
+<li><a href="https://www.iep.utm.edu/freud/" target="_blank" rel="noopener noreferrer">Sigmund Freud</a></li>
+<li><a href="https://www.iep.utm.edu/zizek/" target="_blank" rel="noopener noreferrer">Slavoj Zizek</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Erich_Fromm" target="_blank" rel="noopener noreferrer">Erich Fromm</a></li>
+<li><a href="https://www.whitehouse.gov/about-the-white-house/presidents/william-j-clinton/" target="_blank" rel="noopener noreferrer">William J. Clinton</a></li>
+<li><a href="https://www.instagram.com/p/BhnSbGcFu68/" target="_blank" rel="noopener noreferrer">Molly</a></li>
+<li><a href="https://tim.blog/2017/02/21/krista-tippett/" target="_blank" rel="noopener noreferrer">Krista Tippett</a></li>
+<li><a href="http://ellenlanger.com/" target="_blank" rel="noopener noreferrer">Ellen Langer</a></li>
+<li><a href="https://www.mariabamford.com/" target="_blank" rel="noopener noreferrer">Maria Bamford</a></li>
+<li><a href="https://twitter.com/janetjackson" target="_blank" rel="noopener noreferrer">Janet Jackson</a></li>
+<li><a href="http://www.brian-eno.net/" target="_blank" rel="noopener noreferrer">Brian Eno</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Peter_Schmidt_(artist)" target="_blank" rel="noopener noreferrer">Peter Schmidt</a></li>
+<li><a href="https://twitter.com/stacyglenjones/" target="_blank" rel="noopener noreferrer">Stacy Jones</a></li>
+<li><a href="https://www.instagram.com/bedforddanes75/" target="_blank" rel="noopener noreferrer">George Daniel</a></li>
+<li><a href="https://twitter.com/Truman_Black" target="_blank" rel="noopener noreferrer">Matty Healy</a></li>
+<li><a href="https://www.freddysheed.com/" target="_blank" rel="noopener noreferrer">Freddy Sheed</a></li>
+<li><a href="https://tim.blog/2017/01/18/arnold-schwarzenegger-part-2-bodybuilding-investing-and-online-battles/" target="_blank" rel="noopener noreferrer">Arnold Schwarzenegger</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Franco_Columbu" target="_blank" rel="noopener noreferrer">Franco Columbu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Al_Pacino" target="_blank" rel="noopener noreferrer">Al Pacino</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Robert_De_Niro" target="_blank" rel="noopener noreferrer">Robert De Niro</a></li>
+<li><a href="https://tim.blog/2017/09/17/bill-burr/" target="_blank" rel="noopener noreferrer">Bill Burr</a></li>
+<li><a href="https://www.michaeljackson.com/" target="_blank" rel="noopener noreferrer">Michael Jackson</a></li>
+<li><a href="https://tim.blog/2016/11/27/tools-of-titans-josh-waitzkin-distilled/" target="_blank" rel="noopener noreferrer">Josh Waitzkin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bobby_Fischer" target="_blank" rel="noopener noreferrer">Bobby Fischer</a></li>
+<li><a href="http://johnbonham.co.uk/" target="_blank" rel="noopener noreferrer">John Bonham</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sam_Kinison" target="_blank" rel="noopener noreferrer">Sam Kinison</a></li>
+<li><a href="https://tim.blog/2017/03/30/cheryl-strayed/" target="_blank" rel="noopener noreferrer">Cheryl Strayed</a></li>
+<li><a href="https://twitter.com/AndreAgassi" target="_blank" rel="noopener noreferrer">Andre Agassi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bill_Murray" target="_blank" rel="noopener noreferrer">Bill Murray</a></li>
+<li><a href="https://www.coupland.com/" target="_blank" rel="noopener noreferrer">Douglas Coupland</a></li>
+<li><a href="http://the-wanderling.com/mara.html" target="_blank" rel="noopener noreferrer">Mara</a></li>
+</ul>
+<div class="wpcom-related-posts" id="wpcom-related-posts-41034">
+<ul>
+<li>
+<a href="https://tim.blog/2018/11/28/the-tim-ferriss-show-transcripts-dave-elitch/"><img width="640" height="427" src="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=640&strip=all" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=640&strip=all 640w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=1280&strip=all 1280w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=150&strip=all 150w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=300&strip=all 300w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=768&strip=all 768w, https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=500&strip=all 500w" sizes="(max-width: 640px) 100vw, 640px" data-attachment-id="41035" data-permalink="https://tim.blog/2018/11/26/dave-elitch/dave_elitch/#main" data-orig-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&strip=all" data-orig-size="3960,2640" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;1.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;Canon EOS 5D Mark III&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1497738445&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;50&quot;,&quot;iso&quot;:&quot;1600&quot;,&quot;shutter_speed&quot;:&quot;0.004&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Dave_Elitch" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=300&strip=all" data-large-file="https://fhww.files.wordpress.com/2018/11/dave_elitch.jpg?quality=80&amp;strip=all&amp;w=500&strip=all" /></a>
+<a href="https://tim.blog/2018/11/28/the-tim-ferriss-show-transcripts-dave-elitch/">The Tim Ferriss Show Transcripts: Dave Elitch&nbsp;(#348)</a>
+</li>
+<li>
+<a href="https://tim.blog/2018/09/13/scott-belsky/"><img width="640" height="427" src="https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=640&strip=all" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=640&strip=all 640w, https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=1280&strip=all 1280w, https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=150&strip=all 150w, https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=300&strip=all 300w, https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=768&strip=all 768w, https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=500&strip=all 500w" sizes="(max-width: 640px) 100vw, 640px" data-attachment-id="38451" data-permalink="https://tim.blog/2018/09/13/scott-belsky/scott_belsky/#main" data-orig-file="https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&strip=all" data-orig-size="5760,3840" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Scott_Belsky" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=300&strip=all" data-large-file="https://fhww.files.wordpress.com/2018/09/scott_belsky.jpg?quality=80&amp;strip=all&amp;w=500&strip=all" /></a>
+<a href="https://tim.blog/2018/09/13/scott-belsky/">Scott Belsky — How to Conquer the Messy Middle&nbsp;(#336)</a>
+</li>
+<li>
+<a href="https://tim.blog/2018/06/06/the-tim-ferriss-show-transcripts-dave-camarillo/">The Tim Ferriss Show Transcripts: Dave Camarillo&nbsp;(#196)</a>
+</li>
+<li>
+<a href="https://tim.blog/2019/02/28/graham-duncan/"><img width="640" height="427" src="https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=640&strip=all" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=640&strip=all 640w, https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=1280&strip=all 1280w, https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=150&strip=all 150w, https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=300&strip=all 300w, https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=768&strip=all 768w, https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=500&strip=all 500w" sizes="(max-width: 640px) 100vw, 640px" data-attachment-id="44095" data-permalink="https://tim.blog/2019/02/28/graham-duncan/cnbc-events-season-2018/#main" data-orig-file="https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&strip=all" data-orig-size="6720,4480" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;4.5&quot;,&quot;credit&quot;:&quot;Heidi Gutman\/CNBC&quot;,&quot;camera&quot;:&quot;Canon EOS 5D Mark IV&quot;,&quot;caption&quot;:&quot;CNBC EVENTS -- Sohn Investment Conference -- Pictured: (l-r) -- (Photo by: Heidi Gutman\/CNBC)&quot;,&quot;created_timestamp&quot;:&quot;1524506346&quot;,&quot;copyright&quot;:&quot;2018 NBCUniversal Media, LLC.&quot;,&quot;focal_length&quot;:&quot;180&quot;,&quot;iso&quot;:&quot;6400&quot;,&quot;shutter_speed&quot;:&quot;0.0025&quot;,&quot;title&quot;:&quot;CNBC Events - Season 2018&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="CNBC Events &#8211; Season 2018" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=300&strip=all" data-large-file="https://fhww.files.wordpress.com/2019/02/graham_duncan_tim_ferriss_show.jpg?quality=80&amp;strip=all&amp;w=500&strip=all" /></a>
+<a href="https://tim.blog/2019/02/28/graham-duncan/">Graham Duncan — Talent Is the Best Asset Class&nbsp;(#362)</a>
+</li>
+<li>
+<a href="https://tim.blog/2019/03/28/neil-gaiman/"><img width="640" height="360" src="https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=640&#038;h=360" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=640&#038;h=360 640w, https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=1280 1280w, https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=150 150w, https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=300 300w, https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=768 768w, https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=500 500w" sizes="(max-width: 640px) 100vw, 640px" data-attachment-id="45060" data-permalink="https://tim.blog/2019/03/28/neil-gaiman/final-01_34_11_02-still012/#main" data-orig-file="https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png" data-orig-size="1920,1080" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Neil Gaiman on The Tim Ferriss Show" data-image-description="" data-medium-file="https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=300" data-large-file="https://fhww.files.wordpress.com/2019/03/final.01_34_11_02.still012.png?w=500" /></a>
+<a href="https://tim.blog/2019/03/28/neil-gaiman/">Neil Gaiman — The Interview I&#8217;ve Waited 20 Years To Do&nbsp;(#366)</a>
+</li>
+</ul>
+</div><p><em>Posted on: November 26, 2018.</em></p><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-41034" class="share-facebook sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-41034" class="share-twitter sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-print"><a rel="nofollow noopener noreferrer" data-shared="" class="share-print sd-button share-icon" href="https://tim.blog/2018/11/26/dave-elitch/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-end"></li></ul></div></div></div></div>		
+					<p id="fhcp">
+				<p><span style="font-weight:400;">Please check out </span><a href="https://tribeofmentors.com/"><b>Tribe of Mentors</b></a><span style="font-weight:400;">, my newest book, which shares short, tactical life advice from 100+ world-class performers. Many of the world's most famous entrepreneurs, athletes, investors, poker players, and artists are part of the book. The tips and strategies in </span><a href="https://tribeofmentors.com/"><b>Tribe of Mentors </b></a><span style="font-weight:400;">have already changed my life, and I hope the same for you. </span><a href="https://tribeofmentors.com/intro/#main"><b>Click here for a sample chapter</b></a><b> </b><span style="font-weight:400;">and full details. Roughly 90% of the guests have never appeared on my podcast.</span></p>
+<p><span style="font-weight:400;">Who was interviewed? Here's a very partial list: tech icons (founders of Facebook, Twitter, LinkedIn, Craigslist, Pinterest, Spotify, Salesforce, Dropbox, and more), Jimmy Fallon, Arianna Huffington, Brandon Stanton (Humans of New York), Lord Rabbi Jonathan Sacks, Ayaan Hirsi Ali, Ben Stiller, Maurice Ashley (first African-American Grandmaster of chess), Brené Brown (researcher and bestselling author), Rick Rubin (legendary music producer), Temple Grandin (animal behavior expert and autism activist), Franklin Leonard (The Black List), Dara Torres (12-time Olympic medalist in swimming), David Lynch (director), Kelly Slater (surfing legend), Bozoma Saint John (Beats/Apple/Uber), Lewis Cantley (famed cancer researcher), Maria Sharapova, Chris Anderson (curator of TED), Terry Crews, Greg Norman (golf icon), Vitalik Buterin (creator of Ethereum), and nearly 100 more. </span><a href="https://tribeofmentors.com/"><b>Check it all out by clicking here.</b></a></p>
+			</p>
+			</div><!-- .entry-content -->
+</article><!-- #post-## -->
+
+					<nav role="navigation" id="nav-below" class="post-navigation">
+			<h1 class="screen-reader-text">Post navigation</h1>
+
+		
+			<div class="nav-previous"><a href="https://tim.blog/2018/11/22/the-tim-ferriss-show-transcripts-stan-grof/" rel="prev"><span class="meta-nav">&larr;</span> The Tim Ferriss Show Transcripts: Stan Grof&nbsp;(#347)</a></div>			<div class="nav-next"><a href="https://tim.blog/2018/11/27/lebron-james-mike-mancias/" rel="next">LeBron James and His Top-Secret Trainer, Mike Mancias&nbsp;(#349) <span class="meta-nav">&rarr;</span></a></div>
+		
+		</nav><!-- #nav-below -->
+		
+			
+	<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2018/11/26/dave-elitch/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://tim.blog/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="9d8a58e988" /><input type="hidden" name="_wp_http_referer" value="/2018/11/26/dave-elitch/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" class="nascar-signin-link"
+                   title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=R" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=R" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=R" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#519bf7" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#3db366" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#fdc600" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#f15b44" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=R" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=R" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='41034' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="83707bbacd" /></p>
+<input type="hidden" name="genseq" value="1554044308" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="81"/></p>			</form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>
+		<p class="comment-zen">
+		<strong class="green">Comment Rules:</strong> Remember what Fonzie was like? Cool. That’s how we’re gonna be — cool. Critical is fine, but if you’re rude, we’ll delete your stuff. <strong>Please do not put your URL in the comment text</strong> and <strong>please use your PERSONAL name or initials and not your business name</strong>, as the latter comes off like spam. Have fun and thanks for adding to the conversation! (Thanks to <a href="http://www.brianoberkirch.com/" target="_blank" title="Link to Brian Oberkich’s Website">Brian Oberkirch</a> for the inspiration)
+	</p>
+	
+			<h2 class="comments-title">
+			17 comments on &ldquo;<span>Dave Elitch — How to Get Out of Your Own Way&nbsp;(#348)</span>&rdquo;		</h2>
+
+		<ol class="comment-list">
+			
+		<li id="comment-2247618" class="comment byuser comment-author-modblair even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2247618" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/506c8f9cece2f76d3c7c2ab6e3dcccf2?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">modblair</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2247618">
+							<time datetime="2018-11-26T12:03:14-07:00">
+								November 26, 2018 at 12:03 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I’m extremely glad that  this episode gave notice to Jimmy Chamberlin. The Jimmy Chamberlin Complex “”Life Begins Again” is still up there for my top albums so many years later.</p>
+<p id="comment-like-2247618" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2247618&#038;_wpnonce=a22fc0b3e0" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2247618" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2247618#respond' data-commentid="2247618" data-postid="41034" data-belowelement="div-comment-2247618" data-respondelement="respond" aria-label='Reply to modblair'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2248309" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2248309" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/11d68c2c4e60f4a7f4187393cb7f918b?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Sania</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2248309">
+							<time datetime="2018-11-27T02:32:01-07:00">
+								November 27, 2018 at 2:32 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I&#8217;ve just added more books to my wishlist ☺ Really enjoyed this episode. Thank you Tim, thank you Dave!</p>
+<p id="comment-like-2248309" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2248309&#038;_wpnonce=4353c83dd0" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2248309" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2248309#respond' data-commentid="2248309" data-postid="41034" data-belowelement="div-comment-2248309" data-respondelement="respond" aria-label='Reply to Sania'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2248453" class="comment byuser comment-author-jthurbersmith even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2248453" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/d5952293307b23d19afd82653100ccdf?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Jayne</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2248453">
+							<time datetime="2018-11-27T06:14:26-07:00">
+								November 27, 2018 at 6:14 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&#8220;If you can&#8217;t breathe in that position you haven&#8217;t earned that position.&#8221;</p>
+<p id="comment-like-2248453" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2248453&#038;_wpnonce=0007c72753" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2248453" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2248453#respond' data-commentid="2248453" data-postid="41034" data-belowelement="div-comment-2248453" data-respondelement="respond" aria-label='Reply to Jayne'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2248789" class="comment byuser comment-author-bonniebelle82 odd alt thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-2248789" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/b9add1c6384064c939696e74c3b14e94?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">bonniebelle82</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2248789">
+							<time datetime="2018-11-27T11:15:07-07:00">
+								November 27, 2018 at 11:15 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I was really enjoying this episode until I reached the end. With only 13 minutes left of the podcast, I lost all respect for both the interviewer and the interviewee.</p>
+<p>Please consider how insulting it is to the people who work hard for TSA to keep our flights safe when two people, Dave Elitch and Tim Ferris thoroughly insult them. Dave directly insults them with his words:<br />
+“TSA employees drive me bananas. I travel a lot. A lot of them are totally incompetent. Going to anything where you have to deal with someone in that type of a job, you go wait, why would this person be competent. A competent person wouldn’t have this job in the first place so why am I expecting that to begin with, I’m setting myself up to get angry.”</p>
+<p>These words make Dave sound like an out-of-touch elitist. These people are working hard to pay their bills, buy food, and live their lives.</p>
+<p>Tim, you indirectly insult them by not editing this comment out of the podcast.</p>
+<p>These people work very hard to earn an honest living. I find it incredibly ignorant, especially for someone Tim calls “one of the most well-read people he knows” to degrade people who are working hard. I would HIGHLY recommend this so-called well-read guy to revisit The Four Agreements and to be a bit more impeccable with his word.</p>
+<p>The show notes include listings of every person mentioned. How was THIS comment that is so insulting left on the aired podcast?</p>
+<p>I would like to request that this part of the interview be removed from the show immediately.</p>
+<p>Thank you.</p>
+<p id="comment-like-2248789" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2248789&#038;_wpnonce=e532f0bb4f" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2248789" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2248789#respond' data-commentid="2248789" data-postid="41034" data-belowelement="div-comment-2248789" data-respondelement="respond" aria-label='Reply to bonniebelle82'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		<ul class="children">
+
+		<li id="comment-2249577" class="comment even depth-2 parent highlander-comment">
+			<article id="div-comment-2249577" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/1834da5b6b01418bde3677f15a7ccea0?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">John</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2249577">
+							<time datetime="2018-11-28T01:38:34-07:00">
+								November 28, 2018 at 1:38 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>great comment &#8211; agree 100 per cent. I was so shocked when Dave made the derogatory comments and very disappointed when Tim did not pull him up.</p>
+<p id="comment-like-2249577" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2249577&#038;_wpnonce=9cd07771cd" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2249577" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2249577#respond' data-commentid="2249577" data-postid="41034" data-belowelement="div-comment-2249577" data-respondelement="respond" aria-label='Reply to John'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		<ul class="children">
+
+		<li id="comment-2251462" class="comment odd alt depth-3 highlander-comment">
+			<article id="div-comment-2251462" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/7a1ac43d59a63292ea73258f2044e2a1?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Sebastian Durso</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2251462">
+							<time datetime="2018-11-29T12:13:04-07:00">
+								November 29, 2018 at 12:13 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ditto.</p>
+<p id="comment-like-2251462" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2251462&#038;_wpnonce=a83311272e" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2251462" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+									</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-2249206" class="comment byuser comment-author-bricolagetarras even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2249206" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/7693a75a4b535e574ff6e7deec0b1589?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">bricolagetarras</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2249206">
+							<time datetime="2018-11-27T20:29:36-07:00">
+								November 27, 2018 at 8:29 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Tim, Thank you so much for another amazing podcast! I feel you were very relaxed during this interview and it came through with your humour and the rapport you shared with Dave. I enjoyed this immensely, Thank you.</p>
+<p id="comment-like-2249206" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2249206&#038;_wpnonce=e10be5c3d8" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2249206" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2249206#respond' data-commentid="2249206" data-postid="41034" data-belowelement="div-comment-2249206" data-respondelement="respond" aria-label='Reply to bricolagetarras'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2249554" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2249554" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://i0.wp.com/pbs.twimg.com/profile_images/1042720714510544897/ZibwrvZ-_normal.jpg?resize=64%2C64&#038;quality=80&#038;strip=all' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Paul Walker</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2249554">
+							<time datetime="2018-11-28T01:02:00-07:00">
+								November 28, 2018 at 1:02 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I&#8217;m ashamed I had no clue who Dave was prior to this podcast. I am as far from a drummer as can be and this is exactly what I love about the show, Tim.  2 hours of listening in and learning from someone off the grid of my experience &#8211; loved it. Have just watched 52 mins of Dave drumming, cut &amp; pasted the book recos to my Evernote list, and will re-read Open.</p>
+<p id="comment-like-2249554" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2249554&#038;_wpnonce=717ce9e91e" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2249554" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2249554#respond' data-commentid="2249554" data-postid="41034" data-belowelement="div-comment-2249554" data-respondelement="respond" aria-label='Reply to Paul Walker'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2250641" class="comment byuser comment-author-acutia even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2250641" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/68dec7153cafb563b77708acce7a000a?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">acutia</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2250641">
+							<time datetime="2018-11-28T13:04:47-07:00">
+								November 28, 2018 at 1:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>That existential quote is by Erich Fromm (See: <a href="https://en.wikiquote.org/wiki/Erich_Fromm#Man_for_Himself_(1947)" rel="nofollow">https://en.wikiquote.org/wiki/Erich_Fromm#Man_for_Himself_(1947)</a>, but he&#8217;s really just channeling Heidegger.</p>
+<p id="comment-like-2250641" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2250641&#038;_wpnonce=3c4474febb" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2250641" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2250641#respond' data-commentid="2250641" data-postid="41034" data-belowelement="div-comment-2250641" data-respondelement="respond" aria-label='Reply to acutia'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2252412" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2252412" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/01c6eecbcfd3c3e1c8dd31c5977b3794?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Walt</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2252412">
+							<time datetime="2018-11-30T09:41:52-07:00">
+								November 30, 2018 at 9:41 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Tim, in your discussion with Dave Elitch the films of Adam Curtis are discussed. I have copies of Adam&#8217;s complete film work that a friend at the BBC provided for me. If you like, I can provide you with a .zip file to download and view them. Eminently worth watching, and interesting views on society.</p>
+<p id="comment-like-2252412" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2252412&#038;_wpnonce=1d36e751c1" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2252412" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2252412#respond' data-commentid="2252412" data-postid="41034" data-belowelement="div-comment-2252412" data-respondelement="respond" aria-label='Reply to Walt'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2257053" class="comment byuser comment-author-gesturh even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2257053" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/a07193da236c73ef3caa61cd2af00d64?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Gestur H.</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2257053">
+							<time datetime="2018-12-05T02:26:36-07:00">
+								December 5, 2018 at 2:26 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>My favorite interviews are the surprises when people I&#8217;ve admired for their talent completely (seemingly) unrelated to the podcast&#8217;s themes of personal development turn up and change my view of them for the better. Elitch&#8217;s contribution to the Mars Volta got me through tough times, and I had no idea you were involved with that scene in any way, Tim.</p>
+<p>Speaking of drum videos: [Moderator: very funny nyangostar 2017 drum video on YouTube removed.]</p>
+<p id="comment-like-2257053" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2257053&#038;_wpnonce=3a2b94eb7a" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2257053" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2257053#respond' data-commentid="2257053" data-postid="41034" data-belowelement="div-comment-2257053" data-respondelement="respond" aria-label='Reply to Gestur H.'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2257508" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2257508" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/e715a364f99df030ffaca79c52850a5f?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Aidan Collins</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2257508">
+							<time datetime="2018-12-05T08:10:26-07:00">
+								December 5, 2018 at 8:10 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I have to admit, after reading this, I am now officially a fan! 🙂</p>
+<p id="comment-like-2257508" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2257508&#038;_wpnonce=6678cb6726" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2257508" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2257508#respond' data-commentid="2257508" data-postid="41034" data-belowelement="div-comment-2257508" data-respondelement="respond" aria-label='Reply to Aidan Collins'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2262422" class="comment byuser comment-author-kdwells even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2262422" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/d531db8dec977ccb924e46709c3f803e?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Kimberly Dawn Wells</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2262422">
+							<time datetime="2018-12-11T11:53:10-07:00">
+								December 11, 2018 at 11:53 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>This is one of my absolute favorite episodes. I loved all the great deep learning advice, the banter (as always), the book recommendations, and the obscure trivia. Thanks Tim and Dave!</p>
+<p id="comment-like-2262422" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2262422&#038;_wpnonce=29868f2bcf" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2262422" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2262422#respond' data-commentid="2262422" data-postid="41034" data-belowelement="div-comment-2262422" data-respondelement="respond" aria-label='Reply to Kimberly Dawn Wells'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2273312" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2273312" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/07dd090b37ca3744573ca0d522ebea39?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Dudeasincool</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2273312">
+							<time datetime="2018-12-25T00:21:05-07:00">
+								December 25, 2018 at 12:21 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>“Man is the only animal for whom his own existence is a problem which he has to solve and from which he cannot escape.</p>
+<p id="comment-like-2273312" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2273312&#038;_wpnonce=560d148d68" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2273312" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2273312#respond' data-commentid="2273312" data-postid="41034" data-belowelement="div-comment-2273312" data-respondelement="respond" aria-label='Reply to Dudeasincool'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2284541" class="comment byuser comment-author-6stringraga even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2284541" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/4108f85dc264804948c9bb4c39b3d447?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">6string</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2284541">
+							<time datetime="2019-01-05T02:45:54-07:00">
+								January 5, 2019 at 2:45 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>			Here it is 4:30 in the morning and I&#8217;ve been up since 2 a.m. I listen to your entire talk with Dave and enjoyed it immensely while I worked on my guitar playing and did yoga and deep breathing. After the show I went through all the notes and the books and the people&#8217;s names that had been mentioned and I was really amazed at all the work that had been done and shared so freely with people like me!</p>
+<p>Oh, and I recommend the Natural Grocers location Guadalupe and 39th Street! See you there.</p>
+<p>Again, thanks for all you do, tribe of mentors, and everything else!		</p>
+<p id="comment-like-2284541" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2284541&#038;_wpnonce=6bd4b30dbf" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2284541" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2284541#respond' data-commentid="2284541" data-postid="41034" data-belowelement="div-comment-2284541" data-respondelement="respond" aria-label='Reply to 6string'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2293426" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-2293426" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/5a92c6af9943d64478649fa8edef4f0a?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">Stephen</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2293426">
+							<time datetime="2019-01-13T16:26:00-07:00">
+								January 13, 2019 at 4:26 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>The episode was great and pretty mind blowing.  Thank you Dave for the recommendation of Edward Bernays.   After reading Propaganda I read Crystallizing Public Opinion.  Considered the decision passed down by the The Supreme Court&#8217;s Masterpiece Cakeshop ruling impacts on civil rights, and emphasis on free market it had me thinking.   In your belief structure previously you relayed a concern about people being easily offended, and less resilient.  I was interested based on Edward Bernays work if you have had any change in insight.  It has been interesting in talking people who feel that strong in the free market ideals, but marginalize people who advocate LGBT, Minorities, Immigrants, Medical, or Psychological as easily offended, or snow flakes.  Under the popular understanding of free market it seems like advocacy of allies is simply participation of the individuals values that they bring to the market.  Marginalizing people as easily offended instead of participating in the discussion seems to be oppositional to a free market and those who prefer it over government regulation.  Considering my current understanding of the reading and the political landscape I&#8217;ve just found this concept really interesting.  It was a great episode and after all the works you have put out that I listened to or recommended I just really wanted to get your perspective.  It&#8217;s been a very interest thought exercise to contribute to discussions I have had with people of opposing views.</p>
+<p id="comment-like-2293426" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2293426&#038;_wpnonce=6d465bc7e4" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2293426" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2293426#respond' data-commentid="2293426" data-postid="41034" data-belowelement="div-comment-2293426" data-respondelement="respond" aria-label='Reply to Stephen'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+
+		<li id="comment-2311940" class="comment byuser comment-author-robchimento even thread-even depth-1 highlander-comment">
+			<article id="div-comment-2311940" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/6c1f1b278f8e8713bf79831b925ede6a?s=64&#038;d=identicon&#038;r=R' class='avatar avatar-64' height='64' width='64' />						<cite class="fn">robchimento</cite> &mdash; 					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://tim.blog/2018/11/26/dave-elitch/#comment-2311940">
+							<time datetime="2019-02-07T05:06:21-07:00">
+								February 7, 2019 at 5:06 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>What was the name of the cards they were talking about?</p>
+<p id="comment-like-2311940" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://tim.blog/2018/11/26/dave-elitch/?like_comment=2311940&#038;_wpnonce=b788e04594" class="comment-like-link needs-login" rel="nofollow" data-blog="56542934"><span>Like</span></a><span id="comment-like-count-2311940" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='/2018/11/26/dave-elitch/?replytocom=2311940#respond' data-commentid="2311940" data-postid="41034" data-belowelement="div-comment-2311940" data-respondelement="respond" aria-label='Reply to robchimento'>Reply</a>				</div><!-- .reply -->
+			</article><!-- .comment-body -->
+
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+</div><!-- #comments -->
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<div id="secondary" class="widget-area" role="complementary">
+		
+			<h3>Tim on Facebook&hellip;</h3>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=163829051721"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+	<div class="fb-like" data-href="https://www.facebook.com/TimFerriss" data-width="300" data-show-faces="true" data-send="false"></div>	  <div id="listen-anywhere" class="widget widget-listen-anywhere">
+		<header>
+		<h3>Click below to subscribe <br/>for new episodes</h3>
+		<img src="https://s2.wp.com/wp-content/themes/vip/four-hour-work-week/images/podcast-header/tfs-logo.png">
+	  </header>
+	  <ul class="listen-anywhere-sources">
+		<li class="source-itunes"><a href="https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2" target="_blank"></a></li>
+		<li class="source-stitcher"><a href="http://www.stitcher.com/podcast/the-tim-ferriss-show" target="_blank"></a></li>
+		<li class="source-overcast"><a href="https://overcast.fm/itunes863897795/the-tim-ferriss-show" target="_blank"></a></li>
+	  </ul>
+	</div>
+	<aside id="tf-popular-category-2" class="widget widget_tf-popular-category"><h1 class="widget-title">Popular Podcasts</h1><ul class="popular-post-list">								<li class="post-45056 post type-post status-publish format-standard has-post-thumbnail hentry category-the-tim-ferriss-show tag-neil-gaiman tag-writing-process tag-writing-tips fhww_guest_name-neil-gaiman">
+									<h4><a href="https://tim.blog/2019/03/28/neil-gaiman/">Neil Gaiman — The Interview I&#8217;ve Waited 20 Years To Do&nbsp;(#366)</a></h4>
+								</li><!-- #post-45056 -->
+																<li class="post-43316 post type-post status-publish format-standard has-post-thumbnail hentry category-the-tim-ferriss-show tag-built-to-last tag-good-to-great tag-jim-collins tag-level-5-leader tag-turning-the-flywheel fhww_guest_name-jim-collins">
+									<h4><a href="https://tim.blog/2019/02/18/jim-collins/">Jim Collins — A Rare Interview with a Reclusive Polymath&nbsp;(#361)</a></h4>
+								</li><!-- #post-43316 -->
+																<li class="post-44498 post type-post status-publish format-standard has-post-thumbnail hentry category-the-tim-ferriss-show tag-drunk-dial tag-drunk-dialing tag-tea-time-with-tim">
+									<h4><a href="https://tim.blog/2019/03/11/tea-time-with-tim/">Tea Time with Tim — How to Find Mentors, Decrease Anxiety Through Training, and Much More&nbsp;(#363)</a></h4>
+								</li><!-- #post-44498 -->
+																<li class="post-44094 post type-post status-publish format-standard has-post-thumbnail hentry category-the-tim-ferriss-show tag-graham-duncan fhww_guest_name-graham-duncan">
+									<h4><a href="https://tim.blog/2019/02/28/graham-duncan/">Graham Duncan — Talent Is the Best Asset Class&nbsp;(#362)</a></h4>
+								</li><!-- #post-44094 -->
+								</ul><!-- .popular-post-list --></aside><aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Topics</h1>		<ul>
+				<li class="cat-item cat-item-4529301"><a href="https://tim.blog/category/30-day-challenges/" >30-Day Challenges</a> (2)
+</li>
+	<li class="cat-item cat-item-47167197"><a href="https://tim.blog/category/4-hour-case-studies/" >4-Hour Case Studies</a> (50)
+</li>
+	<li class="cat-item cat-item-44070"><a href="https://tim.blog/category/automation/" >Automation</a> (7)
+</li>
+	<li class="cat-item cat-item-3990"><a href="https://tim.blog/category/dance/" >Dance</a> (3)
+</li>
+	<li class="cat-item cat-item-19614065"><a href="https://tim.blog/category/e-mail-detox/" >E-mail Detox</a> (23)
+</li>
+	<li class="cat-item cat-item-183"><a href="https://tim.blog/category/entrepreneurship/" >Entrepreneurship</a> (60)
+</li>
+	<li class="cat-item cat-item-415608776"><a href="https://tim.blog/category/fearless/" >Fearless</a> (2)
+</li>
+	<li class="cat-item cat-item-4427571"><a href="https://tim.blog/category/filling-the-void/" >Filling the Void</a> (92)
+</li>
+	<li class="cat-item cat-item-1559"><a href="https://tim.blog/category/gadgets/" >Gadgets</a> (15)
+</li>
+	<li class="cat-item cat-item-18399339"><a href="https://tim.blog/category/geoarbitrage/" >Geoarbitrage</a> (8)
+</li>
+	<li class="cat-item cat-item-831"><a href="https://tim.blog/category/interviews/" >Interviews</a> (29)
+</li>
+	<li class="cat-item cat-item-6635"><a href="https://tim.blog/category/investing/" >Investing</a> (18)
+</li>
+	<li class="cat-item cat-item-1934"><a href="https://tim.blog/category/language/" >Language</a> (16)
+</li>
+	<li class="cat-item cat-item-191382788"><a href="https://tim.blog/category/low-information-diet-and-selective-ignorance/" >Low-Information Diet</a> (42)
+</li>
+	<li class="cat-item cat-item-175"><a href="https://tim.blog/category/marketing/" >Marketing</a> (54)
+</li>
+	<li class="cat-item cat-item-2342036"><a href="https://tim.blog/category/performance-psychology/" >Mental Performance</a> (42)
+</li>
+	<li class="cat-item cat-item-2324767"><a href="https://tim.blog/category/mini-retirements/" >Mini-retirements</a> (24)
+</li>
+	<li class="cat-item cat-item-81565949"><a href="https://tim.blog/category/muse-examples/" >Muse Examples</a> (9)
+</li>
+	<li class="cat-item cat-item-891"><a href="https://tim.blog/category/nonsense/" >Nonsense</a> (5)
+</li>
+	<li class="cat-item cat-item-142755019"><a href="https://tim.blog/category/opening-the-kimono-otk/" >Opening the Kimono &#8211; OTK</a> (4)
+</li>
+	<li class="cat-item cat-item-15450272"><a href="https://tim.blog/category/outsourcing-life/" >Outsourcing Life</a> (17)
+</li>
+	<li class="cat-item cat-item-4936765"><a href="https://tim.blog/category/physical-performance/" >Physical Performance</a> (51)
+</li>
+	<li class="cat-item cat-item-907119"><a href="https://tim.blog/category/practical-philosophy/" >Practical Philosophy</a> (38)
+</li>
+	<li class="cat-item cat-item-17903"><a href="https://tim.blog/category/presentations/" >Presentations</a> (3)
+</li>
+	<li class="cat-item cat-item-121507898"><a href="https://tim.blog/category/protecting-personal-time/" >Protecting Time</a> (14)
+</li>
+	<li class="cat-item cat-item-415609153"><a href="https://tim.blog/category/psychedelics/" >Psychedelics</a> (14)
+</li>
+	<li class="cat-item cat-item-76656104"><a href="https://tim.blog/category/quarterly-shipments/" >Quarterly Shipments</a> (3)
+</li>
+	<li class="cat-item cat-item-30"><a href="https://tim.blog/category/random/" >Random</a> (29)
+</li>
+	<li class="cat-item cat-item-7759746"><a href="https://tim.blog/category/remote-offices/" >Remote Offices</a> (7)
+</li>
+	<li class="cat-item cat-item-191382790"><a href="https://tim.blog/category/how-to-live-like-a-rockstar-in/" >Rockstar Living in&#8230;</a> (5)
+</li>
+	<li class="cat-item cat-item-415608606"><a href="https://tim.blog/category/rust-and-iron/" >Rust and Iron</a> (2)
+</li>
+	<li class="cat-item cat-item-4161848"><a href="https://tim.blog/category/science-2/" >Science</a> (5)
+</li>
+	<li class="cat-item cat-item-46646188"><a href="https://tim.blog/category/the-4-hour-body/" >The 4-Hour Body &#8211; 4HB</a> (48)
+</li>
+	<li class="cat-item cat-item-62858329"><a href="https://tim.blog/category/the-4-hour-chef/" >The 4-Hour Chef &#8211; 4HC</a> (39)
+</li>
+	<li class="cat-item cat-item-134462025"><a href="https://tim.blog/category/the-4-hour-chef-recipes/" >The 4-Hour Chef Recipes</a> (1)
+</li>
+	<li class="cat-item cat-item-83069833"><a href="https://tim.blog/category/the-4-hour-workweek-book/" >The Book &#8211; 4HWW</a> (44)
+</li>
+	<li class="cat-item cat-item-63837380"><a href="https://tim.blog/category/the-slow-carb-diet/" >The Slow-Carb Diet</a> (4)
+</li>
+	<li class="cat-item cat-item-222172150"><a href="https://tim.blog/category/the-tim-ferriss-experiment-tfx/" >The Tim Ferriss Experiment &#8211; TFX</a> (11)
+</li>
+	<li class="cat-item cat-item-223337489"><a href="https://tim.blog/category/the-tim-ferriss-show/" >The Tim Ferriss Show</a> (342)
+</li>
+	<li class="cat-item cat-item-415608238"><a href="https://tim.blog/category/the-tim-ferriss-show-transcripts/" >The Tim Ferriss Show Transcripts</a> (213)
+</li>
+	<li class="cat-item cat-item-178667560"><a href="https://tim.blog/category/tim-ferriss-book-club/" >Tim Ferriss Book Club</a> (6)
+</li>
+	<li class="cat-item cat-item-415608393"><a href="https://tim.blog/category/tools-of-titans/" >Tools of Titans</a> (8)
+</li>
+	<li class="cat-item cat-item-200"><a href="https://tim.blog/category/travel/" >Travel</a> (67)
+</li>
+	<li class="cat-item cat-item-415608891"><a href="https://tim.blog/category/tribe-of-mentors/" >Tribe of Mentors</a> (9)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://tim.blog/category/uncategorized/" >Uncategorized</a> (42)
+</li>
+	<li class="cat-item cat-item-6131995"><a href="https://tim.blog/category/writing-and-blogging/" >Writing and Blogging</a> (25)
+</li>
+		</ul>
+			</aside>	</div><!-- #secondary -->
+
+	</div><!-- #content -->
+<div class="newsletter"></div>
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<span class="align-left">
+				<a href="/sitemap.xml">XML Sitemap</a>
+				<span> / </span>
+				<a href="/about/terms-of-service/">Site Terms of Service</a>
+				<span> / </span>
+				<a href="/privacy-policy/">Privacy Policy</a>
+				<span> / </span>
+				<a href="http://vip.wordpress.com/" rel="nofollow" target="_blank">Powered by WordPress.com VIP</a>
+			</span>
+		</div><!-- .site-info -->
+		<div class="copyright-info">
+			Copyright &copy; 2007&#8211;2019 Tim Ferriss.<br />
+					THE 4-HOUR&reg; is a registered trademark of Tim Ferriss.<br />
+					All rights reserved.		</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!-- wpcom_wp_footer -->
+	<script data-leadbox="144965c73f72a2:14629fe93b46dc" data-url="https://fourhourworkweek.leadpages.co/leadbox/144965c73f72a2%3A14629fe93b46dc/5681034041491456/" data-config="%7B%7D" type="text/javascript" src="https://fourhourworkweek.leadpages.co/leadbox-1464370531.js"></script>
+	<script type='text/javascript' src='//0.gravatar.com/js/gprofiles.js?ver=201913y'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-506c8f9cece2f76d3c7c2ab6e3dcccf2">
+	</div>
+	<div class="grofile-hash-map-11d68c2c4e60f4a7f4187393cb7f918b">
+	</div>
+	<div class="grofile-hash-map-d5952293307b23d19afd82653100ccdf">
+	</div>
+	<div class="grofile-hash-map-b9add1c6384064c939696e74c3b14e94">
+	</div>
+	<div class="grofile-hash-map-1834da5b6b01418bde3677f15a7ccea0">
+	</div>
+	<div class="grofile-hash-map-7a1ac43d59a63292ea73258f2044e2a1">
+	</div>
+	<div class="grofile-hash-map-7693a75a4b535e574ff6e7deec0b1589">
+	</div>
+	<div class="grofile-hash-map-8aaedb869a0c5af2b429df80f4e19732">
+	</div>
+	<div class="grofile-hash-map-68dec7153cafb563b77708acce7a000a">
+	</div>
+	<div class="grofile-hash-map-01c6eecbcfd3c3e1c8dd31c5977b3794">
+	</div>
+	<div class="grofile-hash-map-a07193da236c73ef3caa61cd2af00d64">
+	</div>
+	<div class="grofile-hash-map-e715a364f99df030ffaca79c52850a5f">
+	</div>
+	<div class="grofile-hash-map-d531db8dec977ccb924e46709c3f803e">
+	</div>
+	<div class="grofile-hash-map-07dd090b37ca3744573ca0d522ebea39">
+	</div>
+	<div class="grofile-hash-map-4108f85dc264804948c9bb4c39b3d447">
+	</div>
+	<div class="grofile-hash-map-5a92c6af9943d64478649fa8edef4f0a">
+	</div>
+	<div class="grofile-hash-map-6c1f1b278f8e8713bf79831b925ede6a">
+	</div>
+	</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/fhww.wordpress.com\/public.api\/connect\/?action=request&domain=tim.blog","logoutURL":"https:\/\/fhww.wordpress.com\/wp-login.php?action=logout&_wpnonce=f1fd59c6f0","homeURL":"https:\/\/tim.blog\/","postID":"41034","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1551752381j'></script>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/tim.blog\/2018\/11\/26\/dave-elitch\/":41034};
+	</script>
+					<div id="sharing_email" style="display: none;">
+		<form action="/2018/11/26/dave-elitch/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<div
+				class="g-recaptcha"
+				data-sitekey="6LcmyE0UAAAAALID28yVNg7pFCodGaArJzHitez_"
+				data-theme="light"
+				data-type="image"
+				data-tabindex="0"></div>
+			<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en" async></script>
+			
+			<img style="float: right; display: none" class="loading" src="https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="56542934" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://tim.blog" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="The Blog of Author Tim Ferriss" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="402d3d0969" /><input type="hidden" name="_wp_http_referer" value="/2018/11/26/dave-elitch/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+<aside id="eu_cookie_law_widget-3" class="widget widget_eu_cookie_law_widget"><div
+	class="hide-on-button"
+	data-hide-timeout="30"
+	data-consent-expiration="365"
+	id="eu-cookie-law"
+>
+	<form method="post">
+		<input type="submit" value="I accept" class="accept" />
+
+		We use cookies and similar technologies to run this website and help us understand how you use it.
+		<a href="https://tim.blog/cookie-policy/" >
+			See our cookie policy here.		</a>
+ </form>
+</div>
+</aside><link rel='stylesheet' id='all-css-0-3' href='https://s2.wp.com/_static/??-eJyFjEEKwzAMBD9URy12yan0LUIRwY6kmMim5PcNhUBuPc4ss/CpgVZrbA20hyp9zuZAuK3dWaBwq0hLOMVA7jc4omwkfWKH4qA8ZWRh/b1coAruvAXhGWkfNNv//NiufEZvfT2eKaZ7imMsX9F5Q5E=?cssminify=yes' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJyVy0sOQDAUheENqUs8wkCshbqh1Va5LZaPmDCRmP7nfLBZxifj0DiQBB2ugqPdQ0kBPCbtmVW+F4ZAiREJZo8eh8Z0CpePM5+0PhO7kbx0C7QJi3/QK5yw1lWcpWUSp3kRyQMjDkfb'></script>
+<script type='text/javascript' async src='//bounceexchange.com/tag/1313/i.js?ver=20170224'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var FhwwGlobal = {"homeUrl":"https:\/\/tim.blog"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcomVipAnalytics = {"is_404":"0","is_home":"0","is_single":"1","is_front_page":"0","is_archive":"0","percentToTrack":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/tim.blog\/wp-admin\/admin-ajax.php","nonce":"bc024977cd","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/fhww.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Ftim.blog%2F2018%2F11%2F26%2Fdave-elitch%2F","blog_id":"56542934","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=56542934&v=wpcom&tz=-7&user_id=0&subd=fhww","is_public":"1","reblog_enabled":""};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJylkt1OwzAMhV8IN2PThLhAPArKUq9zmz/sZKVvjzcxqFA1NnHTNCc+nx07ZszgUiwYiykHDCjmSNnsU2U4nD5j4gFGxMH0YgJFg/G9YsUWxDHlIqBi08uDuZu0T6kg/4+DH4qI1oOnOMjFT9H52qpTI1wKQVnAmP3ULCQJFbKvHUUxI7UdFqVWPU0DIXg7moIhe1vwl36Fs4ZTyf25crBa3lTIyRWDbbUw2Fk2wYreSP8gHZGZTrf41u4kFLZuuSmSf/ow13udLU9fSzOPWkjpLKcq6E2PJWsmuAhL5IAtWfQYzpDZRvvTKtJOyPPp3OYN1LFO5iajns33fzwFO5AELLBpVuZNmfoAOVyJz0kK7L0lNnKwTLG7rGp6DS+P2+1m9bR+Xq/6T7h4Sso='></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="//stats.wp.com/w.js?59" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'56542934','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'56542934','v':'wpcom','tz':'-7','user_id':'0','post':'41034','subd':'fhww'}]);
+function st_vt() {var x=document.createElement("img");x.src="https://pixel.wp.com/g.gif?blog=56542934&v=wpcomvt&tz=-7&user_id=0&post=41034&subd=fhww&rand="+Math.random();}
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1BNmNJfGhxNCVxUDExYmtib2E/SzdEJm0lUEtbdFU0fFk4cHZvcUFrZT90Tn4yQm1+R3NyNTd1NU51WmJ4MzV4QjExLS1aSVMsWm9DWVQuY1FFMFNqZEZrXTY4fnZTNUlbQ0hqX2EmSFo5flZpd2gmQiUzRFY0amxYTz1VY3hpNEYmby9Xd1N8ZENRR09QYTFTQSZSRVozT3lIJnRfOSw5JXZJcT9IeEY2LDFUX3BfOTk4ZS49ODgvbFhmYzZzaEFIST0zSUMyUSx1R0hXUl84K0dCK2g2NHlNfmduR3RDRWtbeGpiel03OUVDQnFWMUxoK0I1Jk00dl1LZ2lNYjkxNHwyRS9Cbld8'}]);
+_stq.push([ 'clickTrackerInit', '56542934', '41034' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>
+<!--
+	generated in 0.249 seconds
+	167700 bytes batcached for 300 seconds
+-->
