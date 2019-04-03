@@ -103,7 +103,7 @@ async function scrapeEpisodesFromBlog () {
 }
 
 async function scrapeEpisodesFromApi () {
-  const LIMIT = 1
+  const LIMIT = 100
   const PAGE = 1
   const res = await request(`https://tim.blog/wp-json/wp/v2/posts/?per_page=${LIMIT}&page=${PAGE}&categories=223337489`)
   const json = JSON.parse(res)
