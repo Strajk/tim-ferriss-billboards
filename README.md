@@ -14,3 +14,5 @@ Answered by guests from [Tim Ferriss podcast](https://tim.blog/podcast/).
 * Run scraper `npm run scrape`
 * `output.csv` will magically appear 🎩
 * Paste data to Google Sheets and clean up the data manually 🙈
+* Run `npm run googleSheetsToFiles`
+* `results.csv`, `results-full.csv` & `results-full.json`  will magically appear 🐇

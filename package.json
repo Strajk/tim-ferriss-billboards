@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "scrape": "node index.js",
+    "googleSheetsToFiles": "node googleSheetsToFiles.js",
     "test": "jest ."
   },
   "author": "Strajk",
@@ -15,7 +16,8 @@
     "json2csv": "^4.4.1",
     "lodash": "^4.17.11",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.4",
+    "tabletop": "^1.5.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
