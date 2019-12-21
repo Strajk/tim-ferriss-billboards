@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "eslint": "5.16.0",
-    "eslint-config-strajk": "0.0.3"
+    "eslint-config-strajk": "0.0.5"
   }
 }
