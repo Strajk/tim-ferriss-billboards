@@ -20,7 +20,7 @@
     "tabletop": "^1.5.2"
   },
   "devDependencies": {
-    "eslint": "5.16.0",
+    "eslint": "6.8.0",
     "eslint-config-strajk": "0.0.3"
   }
 }
